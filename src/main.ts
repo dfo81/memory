@@ -1,0 +1,1 @@
+document.getElementById('h1_hallo')!.innerText = 'Hello whole World';
