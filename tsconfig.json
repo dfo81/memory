@@ -1,44 +1,28 @@
+
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
-  "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+"compilerOptions": {
+    /* Sprache & Zielumgebung */
+    "target": "ESNext",                  // moderne Syntax, gut für Browser + Vite
+    "lib": ["ESNext", "DOM"],            // Browser-APIs und moderne JS-Funktionen
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    /* Module & Auflösung */
+    "module": "ESNext",                  // ES Modules für Vite/Rollup
+    "moduleResolution": "Bundler",       // spezielle Auflösung für Vite, ersetzt "node"
+    "isolatedModules": true,             // jede Datei wird wie ein Modul behandelt
 
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    /* Typprüfung */
+    "strict": true,                      // alle strikten Checks aktivieren
+    "skipLibCheck": true,                // schneller, da node_modules-Typen nicht geprüft werden
+    "noEmit": true,                      // keine JS-Ausgabe, Build übernimmt Vite
 
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+
+    /* Sonstiges */
+    "esModuleInterop": true,             // bessere Import-Kompatibilität
+    "resolveJsonModule": true,           // erlaubt `import data from './data.json'`
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],                    // nur eigenen Code kompilieren
+  "exclude": ["node_modules", "dist"]    // keine Fremd- oder Build-Dateien prüfen
 }
