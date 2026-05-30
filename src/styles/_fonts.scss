@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('/assets/Red_Rose/RedRose-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-latin-300-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-latin-300-normal.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-024F;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-arabic-300-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-arabic-300-normal.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-latin-400-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-latin-400-normal.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-024F;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-arabic-400-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-arabic-400-normal.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-latin-700-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-latin-700-normal.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-024F;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-arabic-700-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-arabic-700-normal.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-latin-800-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-latin-800-normal.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-024F;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('/assets/almarai_5.2.8/webfonts/almarai-arabic-800-normal.woff2') format('woff2'),
+         url('/assets/almarai_5.2.8/webfonts/almarai-arabic-800-normal.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF;
+}
