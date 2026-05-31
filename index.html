@@ -1,43 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TS-Memory</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <section id="welcome" class="screen">
-        <img class="controller" src="/src/assets/icons/stadia_controller.svg" alt="">
-        <div class="title">
-            <h4>It´s play time.</h4>
-            <h1>Ready to play?</h1>
-        </div>
-        <div id="play-button">
-            <img class="icon-controller" src="/src/assets/icons/controller.svg" alt="">
-            <span>Play</span>
-            <span class="icon-arrow"></span>
-        </div>
+      <img class="controller" src="/src/assets/icons/stadia_controller.svg" alt="" />
+      <div class="title">
+        <h4>It´s play time.</h4>
+        <h1>Ready to play?</h1>
+      </div>
+      <div id="play-button">
+        <img class="icon-controller" src="/src/assets/icons/controller.svg" alt="" />
+        <span>Play</span>
+        <span class="icon-arrow"></span>
+      </div>
     </section>
 
     <section id="settings" class="screen">
-       <div>
-        
-       </div>
-       <div>
+      <div class="settings__outer">
+        <h2>Settings</h2>
+        <img src="/src/assets/icons/Line_left.svg" alt="" class="settings__line" />
 
-       </div>
+        <div class="settings__box">
+          <div class="settings__content">
+            <div class="settings__left">
+              <div class="settings__group">
+                <div class="settings__group-header">
+                  <img src="/src/assets/icons/palette.svg" alt="" />
+                  <h3>Game themes</h3>
+                </div>
+                <div class="settings__options">
+                  <label class="radio-option">
+                    <input type="radio" name="theme" value="it-logos" checked />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">Code vibes theme</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="theme" value="gaming" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">Gaming theme</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="theme" value="da-projects" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">DA Projects theme</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="theme" value="foods" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">Foods theme</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings__group">
+                <div class="settings__group-header">
+                  <img src="/src/assets/icons/chess_pawn.svg" alt="" />
+                  <h3>Choose player</h3>
+                </div>
+                <div class="settings__options">
+                  <label class="radio-option">
+                    <input type="radio" name="player" value="blue" checked />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">Blue</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="player" value="orange" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">Orange</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings__group">
+                <div class="settings__group-header">
+                  <img src="/src/assets/icons/style.svg" alt="" />
+                  <h3>Board size</h3>
+                </div>
+                <div class="settings__options">
+                  <label class="radio-option">
+                    <input type="radio" name="size" value="16" checked />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">16 cards</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="size" value="24" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">24 cards</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="size" value="36" />
+                    <span class="radio-icon"></span>
+                    <span class="radio-label">36 cards</span>
+                    <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings__right">
+              <img id="theme-preview" src="/src/assets/icons/theme=IT logos.svg" alt="Theme preview" />
+              <div class="settings__footer">
+                <div class="settings__breadcrumb">
+                  <span>Game theme</span>
+                  <img src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
+                  <span>Player</span>
+                  <img src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
+                  <span>Board size</span>
+                </div>
+                <button id="start-game" class="settings__start">
+                  <img src="/src/assets/icons/play_frame.svg" alt="" />
+                  <span>Start</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="field" class="screen">
-        <button class="card">
-            <div class="card__inner">
-                <div class="card__face"></div>
-                <div class="card__face card__face--back"></div>
-            </div>
-        </button>
+      <button class="card">
+        <div class="card__inner">
+          <div class="card__face"></div>
+          <div class="card__face card__face--back"></div>
+        </div>
+      </button>
     </section>
 
     <script type="module" src="/src/main.ts"></script>
-</body>
+  </body>
 </html>
