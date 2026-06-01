@@ -291,7 +291,16 @@ body {
             height: 26px;
         }
 
-        &:hover {
+        &:disabled {
+            background-color: #C8C8C8;
+            cursor: default;
+
+            &:hover {
+                transform: none;
+            }
+        }
+
+        &:not(:disabled):hover {
             transform: scale(1.05);
         }
     }

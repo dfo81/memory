@@ -67,7 +67,7 @@
                 </div>
                 <div class="settings__options">
                   <label class="radio-option">
-                    <input type="radio" name="player" value="blue" checked />
+                    <input type="radio" name="player" value="blue" />
                     <span class="radio-icon"></span>
                     <span class="radio-label">Blue</span>
                     <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
@@ -88,7 +88,7 @@
                 </div>
                 <div class="settings__options">
                   <label class="radio-option">
-                    <input type="radio" name="size" value="16" checked />
+                    <input type="radio" name="size" value="16" />
                     <span class="radio-icon"></span>
                     <span class="radio-label">16 cards</span>
                     <img class="option-indicator" src="/src/assets/icons/Line_right.svg" alt="" />
@@ -114,12 +114,12 @@
               <div class="settings__footer">
                 <div class="settings__breadcrumb">
                   <span>Game theme</span>
-                  <img src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
-                  <span>Player</span>
-                  <img src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
-                  <span>Board size</span>
+                  <img id="line-v-1" src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
+                  <span id="breadcrumb-player">Player</span>
+                  <img id="line-v-2" src="/src/assets/icons/Line_vertikal_default.svg" alt="" />
+                  <span id="breadcrumb-size">Board size</span>
                 </div>
-                <button id="start-game" class="settings__start">
+                <button id="start-game" class="settings__start" disabled>
                   <img src="/src/assets/icons/play_frame.svg" alt="" />
                   <span>Start</span>
                 </button>
