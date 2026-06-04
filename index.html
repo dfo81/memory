@@ -156,42 +156,23 @@
           <span>Exit game</span>
         </div>
       </header>
-      <div id="card-grid" class="card-grid"></div>
-
-      <div id="exit-overlay" class="exit-overlay" hidden>
-        <div class="exit-overlay__backdrop"></div>
-        <div class="exit-overlay__card">
-          <h2>Exit game?</h2>
-          <p>Your progress will be lost.</p>
-          <div class="exit-overlay__actions">
-            <button id="exit-cancel">Cancel</button>
-            <button id="exit-confirm">Exit</button>
-          </div>
-        </div>
+      <div id="card-grid" class="card-grid">
+        <!-- template -->
       </div>
     </section>
+
+    <!-- overlay -->
+     <div id="overlay">
+      
+     </div>
 
     <!-- Game over screen -->
-    <section id="game_over" class="screen">
-      <div class="game-over__backdrop"></div>
-      <div class="game-over__card">
-        <h1>Game over</h1>
-        <div class="game-over__scores">
-          <div class="game-over__score blue">
-            <img src="/src/assets/icons/label_blue.svg" alt="" />
-            <span>Blue</span>
-            <span id="final-score-blue">0</span>
-          </div>
-          <div class="game-over__score orange">
-            <img src="/src/assets/icons/label_orange.svg" alt="" />
-            <span>Orange</span>
-            <span id="final-score-orange">0</span>
-          </div>
-        </div>
-        <p id="game-over-winner"></p>
-        <button id="play-again">Play again</button>
+     <section id="game_over">
+      <h1>Game over</h1>
+      <div>
+        <span>Final score</span>
       </div>
-    </section>
+     </section>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
