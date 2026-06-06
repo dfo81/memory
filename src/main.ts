@@ -216,15 +216,15 @@ document.getElementById('start-game')?.addEventListener('click', () => {
 const exitOverlay = document.getElementById('exit-overlay')!
 
 document.querySelector('.exit')?.addEventListener('click', () => {
-    exitOverlay.hidden = false
+    exitOverlay.classList.add('is-open')
 })
 
 document.getElementById('exit-cancel')?.addEventListener('click', () => {
-    exitOverlay.hidden = true
+    exitOverlay.classList.remove('is-open')
 })
 
 document.getElementById('exit-confirm')?.addEventListener('click', () => {
-    exitOverlay.hidden = true
+    exitOverlay.classList.remove('is-open')
     showScreen('welcome')
 })
 document.getElementById('play-again')?.addEventListener('click', () => showScreen('settings'))

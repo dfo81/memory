@@ -1,0 +1,57 @@
+.card-grid {
+  display: grid;
+  gap: 10px;
+  width: fit-content;
+}
+
+.card {
+  width: 130px;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease-in-out;
+    transform: rotateY(180deg);
+  }
+
+  &__face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    background-color: #E8F3F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+
+    img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      background: #1e2020 url(/src/assets/icons/code_vibes_theme/back.svg) center / contain no-repeat;
+    }
+  }
+
+  &.is-flipped &__inner,
+  &.is-matched &__inner {
+    transform: rotateY(0deg);
+  }
+
+  &.is-matched {
+    box-shadow: 6px 6px 8px 0 rgba(#4DD5BC, 0.30);
+    pointer-events: none;
+    border: 5px solid #4DD5BC;
+    border-radius: 5px;
+  }
+}

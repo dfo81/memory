@@ -1,0 +1,70 @@
+@use "variables" as *;
+
+#game_over {
+  z-index: 10;
+  display: grid;
+  place-items: center;
+
+  .game-over__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(#303131, 0.75);
+  }
+
+  .game-over__card {
+    position: relative;
+    width: 540px;
+    background-color: #fff;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    h1 {
+      font-family: $font-display;
+      font-size: 52px;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+  .game-over__scores {
+    display: flex;
+    gap: 40px;
+    font-family: $font-display;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .game-over__score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img { height: 28px; }
+
+    &.blue   { color: #2bb1ff; }
+    &.orange { color: #f58e39; }
+  }
+
+  #game-over-winner {
+    font-family: $font-body;
+    font-size: 20px;
+    margin: 0;
+    color: #1a1a1a;
+  }
+
+  #play-again {
+    font-family: $font-display;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 14px 32px;
+    background-color: #f0ea6e;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover { transform: scale(1.05); }
+  }
+}

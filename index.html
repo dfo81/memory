@@ -161,10 +161,17 @@
       </div>
     </section>
 
-    <!-- overlay -->
-     <div id="overlay">
-      
-     </div>
+    <!-- Exit overlay (bottom sheet) -->
+    <div id="exit-overlay" class="exit-overlay">
+      <div class="exit-overlay__backdrop"></div>
+      <div class="exit-overlay__sheet">
+        <h2 class="exit-overlay__title">Are you sure you want to quit the game?</h2>
+        <div class="exit-overlay__actions">
+          <button id="exit-cancel">Back to game</button>
+          <button id="exit-confirm">Exit game</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Game over screen -->
      <section id="game_over">

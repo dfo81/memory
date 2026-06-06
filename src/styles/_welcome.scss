@@ -1,0 +1,105 @@
+@use "variables" as *;
+
+#welcome {
+  height: 100%;
+  width: 100%;
+  background-color: #303131;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 85px;
+
+  .controller {
+    position: absolute;
+    top: 55%;
+    left: 0;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-family: $font-display;
+      font-size: 140px;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+    }
+
+    h4 {
+      font-family: $font-body;
+      font-size: 48px;
+      font-weight: 400;
+      color: white;
+      margin: 0;
+    }
+  }
+
+  #play-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    background-color: #f0ea6e;
+    gap: 20px;
+    font-family: $font-display;
+    font-size: 40px;
+    transition: transform 0.2s ease-in-out;
+
+    .icon-controller {
+      width: 44px;
+      height: 32px;
+      transition: rotate 0.2s ease-in-out;
+    }
+
+    .icon-arrow {
+      position: relative;
+      width: 44px;
+      height: 32px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &::before {
+        background-image: url("../assets/icons/Arrow_default.svg");
+        opacity: 1;
+        transition: opacity 0.15s ease-in-out 0.15s;
+      }
+
+      &::after {
+        background-image: url("../assets/icons/Arrow_hover.svg");
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out 0s;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+
+      .icon-controller {
+        rotate: -30deg;
+      }
+
+      .icon-arrow {
+        &::before {
+          opacity: 0;
+          transition: opacity 0.15s ease-in-out 0s;
+        }
+
+        &::after {
+          opacity: 1;
+          transition: opacity 0.15s ease-in-out 0.15s;
+        }
+      }
+    }
+  }
+}

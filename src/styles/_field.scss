@@ -1,0 +1,69 @@
+@use "variables" as *;
+
+#field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #303131;
+  gap: 32px;
+  padding-bottom: 32px;
+  overflow-y: auto;
+
+  header {
+    display: flex;
+    width: min(1217px, 96vw);
+    margin-top: 40px;
+    justify-content: space-between;
+    color: #fff;
+    align-items: flex-end;
+    flex-shrink: 0;
+
+    span {
+      font-family: $font-display;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .current-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      img {
+        height: 28px;
+      }
+    }
+
+    .exit {
+      display: flex;
+      align-items: center;
+      padding: 17px 20px;
+      gap: 4px;
+      background-color: #86e9d633;
+      cursor: pointer;
+      border: 3px solid #4DD5BC;
+      transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #86E9D642;
+        box-shadow: 4px 4px 6px 0 rgba(#4DD5BC, 33);
+      }
+    }
+  }
+
+  .labels {
+    display: flex;
+    padding: 17px 20px;
+    gap: 20px;
+    background-color: #86e9d633;
+
+    .label {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .blue   { color: #2bb1ff; }
+    .orange { color: #f58e39; }
+  }
+}
