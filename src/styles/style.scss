@@ -1,28 +1,26 @@
-@use "fonts";
-@use "variables" as *;
+// ═══════════════════════════════════════════════════════════════════════════════
+//  STYLE MANIFEST
+//  base/       → variables, fonts, global reset
+//  screens/    → one file per screen (welcome, settings, field, …)
+//  components/ → reusable pieces (cards, exit-overlay)
+//  themes/     → per-theme overrides, isolated via [data-theme="…"]
+// ═══════════════════════════════════════════════════════════════════════════════
 
-@use "welcome";
-@use "settings";
-@use "field";
-@use "exit-overlay";
-@use "cards";
-@use "game-over";
+// base
+@use "base/variables" as *;
+@use "base/fonts";
+@use "base/reset";
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
+// screens
+@use "screens/welcome";
+@use "screens/settings";
+@use "screens/field";
+@use "screens/game-over";
+@use "screens/result";
 
-.screen {
-  position: fixed;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
+// components
+@use "components/cards";
+@use "components/exit-overlay";
 
-  &.is-active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
+// themes
+@use "themes/gaming";

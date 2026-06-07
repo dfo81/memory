@@ -1,13 +1,14 @@
 import './styles/style.scss'
 
-type Screen = 'welcome' | 'settings' | 'game' | 'game_over'
+type Screen = 'welcome' | 'settings' | 'game' | 'game_over' | 'result'
 type Player = 'blue' | 'orange'
 
 const SCREEN_IDS: Record<Screen, string> = {
     welcome:   'welcome',
     settings:  'settings',
     game:      'field',
-    game_over: 'game_over'
+    game_over: 'game_over',
+    result:    'result'
 }
 
 const base = import.meta.env.BASE_URL
@@ -69,11 +70,26 @@ const CODE_VIBES = ['angular','bootstrap','css','django','firebase','git','githu
     'javascript','nodejs','python','react','sass','sql','terminal','typescript','vscode','vue']
     .map(n => `${base}src/assets/icons/code_vibes_theme/${n}.svg`)
 
+const GAMING = [
+    'Asset 3@2x 1','Asset 4@2x 1','Asset 5@2x 1','Asset 6@2x 1',
+    'Asset 8@2x 1','Asset 8@2x 2','Asset 9@2x 1','Asset 10@2x 1',
+    'Asset 11@2x 1','Asset 12@2x 1','Asset 13@2x 1','Asset 14@2x 1',
+    'Asset 15@2x 1','Asset 16@2x 1','Asset 17@2x 1','Asset 18@2x 1',
+    'Asset 19@2x 1','play button@2x 1',
+].map(n => `${base}src/assets/icons/gaming_theme/${n.replace(/ /g, '%20')}.svg`)
+
 const themeImages: Record<string, string[]> = {
     'it-logos':    CODE_VIBES,
-    'gaming':      CODE_VIBES,
+    'gaming':      GAMING,
     'da-projects': CODE_VIBES,
     'foods':       CODE_VIBES,
+}
+
+const themeBackImages: Record<string, string> = {
+    'it-logos':    `${base}src/assets/icons/code_vibes_theme/back.svg`,
+    'gaming':      `${base}src/assets/icons/gaming_theme/back.svg`,
+    'da-projects': `${base}src/assets/icons/code_vibes_theme/back.svg`,
+    'foods':       `${base}src/assets/icons/code_vibes_theme/back.svg`,
 }
 
 // ── Game state ────────────────────────────────────────────────────────────────
@@ -82,6 +98,7 @@ let flippedCards: HTMLButtonElement[] = []
 let lockBoard = false
 let scores: Record<Player, number> = { blue: 0, orange: 0 }
 let currentPlayer: Player = 'blue'
+let currentTheme = 'it-logos'
 let totalPairs = 0
 let matchedPairs = 0
 
@@ -104,12 +121,15 @@ function updateScores() {
 
 function updateCurrentPlayerIcon() {
     const icon = document.getElementById('current-player-icon') as HTMLImageElement | null
-    if (icon) icon.src = `${base}src/assets/icons/label_${currentPlayer}.svg`
+    if (!icon) return
+    icon.src = currentTheme === 'gaming'
+        ? `${base}src/assets/icons/Player_${currentPlayer}.svg`
+        : `${base}src/assets/icons/label_${currentPlayer}.svg`
 }
 
 // ── Card logic ────────────────────────────────────────────────────────────────
 
-function createCard(imageSrc: string): HTMLButtonElement {
+function createCard(imageSrc: string, backSrc: string): HTMLButtonElement {
     const card = document.createElement('button')
     card.className = 'card'
     card.dataset.image = imageSrc
@@ -118,7 +138,9 @@ function createCard(imageSrc: string): HTMLButtonElement {
             <div class="card__face">
                 <img src="${imageSrc}" alt="" />
             </div>
-            <div class="card__face card__face--back"></div>
+            <div class="card__face card__face--back">
+                <img src="${backSrc}" alt="" />
+            </div>
         </div>`
     card.addEventListener('click', () => onCardClick(card))
     return card
@@ -162,19 +184,43 @@ function checkMatch() {
 }
 
 function showWinner() {
-    const winner =
-        scores.blue > scores.orange ? 'Blue wins!' :
-        scores.orange > scores.blue ? 'Orange wins!' :
-        "It's a draw!"
-
     const blueEl   = document.getElementById('final-score-blue')
     const orangeEl = document.getElementById('final-score-orange')
-    const winnerEl = document.getElementById('game-over-winner')
     if (blueEl)   blueEl.textContent   = String(scores.blue)
     if (orangeEl) orangeEl.textContent = String(scores.orange)
-    if (winnerEl) winnerEl.textContent = winner
 
     showScreen('game_over')
+
+    setTimeout(() => {
+        const gameOverEl = document.getElementById('game_over')!
+        const isDraw = scores.blue === scores.orange
+        const winner: Player | null = isDraw ? null : (scores.blue > scores.orange ? 'blue' : 'orange')
+
+        const subtitleEl = document.getElementById('result-subtitle')!
+        const titleEl    = document.getElementById('result-title')!
+        const iconEl     = document.getElementById('result-icon') as HTMLImageElement
+        const confettiEl = document.getElementById('result-confetti')!
+
+        if (isDraw) {
+            subtitleEl.textContent = "It's a"
+            titleEl.textContent    = 'DRAW'
+            titleEl.className      = 'result__title result__title--draw'
+            iconEl.src             = `${base}src/assets/icons/Scale_Icon.svg`
+            confettiEl.classList.remove('is-visible')
+        } else {
+            subtitleEl.textContent = 'The winner is'
+            titleEl.textContent    = winner === 'blue' ? 'BLUE PLAYER' : 'ORANGE PLAYER'
+            titleEl.className      = `result__title result__title--${winner}`
+            iconEl.src             = `${base}src/assets/icons/Player_${winner}.svg`
+            confettiEl.classList.add('is-visible')
+        }
+
+        gameOverEl.classList.add('is-sliding-out')
+        gameOverEl.addEventListener('animationend', () => {
+            gameOverEl.classList.remove('is-sliding-out')
+            showScreen('result')
+        }, { once: true })
+    }, 2000)
 }
 
 // ── Start game ────────────────────────────────────────────────────────────────
@@ -182,9 +228,20 @@ function showWinner() {
 function startGame(theme: string, player: Player, size: number) {
     scores        = { blue: 0, orange: 0 }
     currentPlayer = player
+    currentTheme  = theme
     matchedPairs  = 0
     flippedCards  = []
     lockBoard     = false
+    document.getElementById('game_over')?.classList.remove('is-sliding-out')
+
+    const field = document.getElementById('field')!
+    field.dataset.theme = theme
+
+    const isGaming = theme === 'gaming'
+    const labelBlueImg   = document.querySelector<HTMLImageElement>('.label.blue img')
+    const labelOrangeImg = document.querySelector<HTMLImageElement>('.label.orange img')
+    if (labelBlueImg)   labelBlueImg.src   = isGaming ? `${base}src/assets/icons/Player_blue.svg`   : `${base}src/assets/icons/label_blue.svg`
+    if (labelOrangeImg) labelOrangeImg.src = isGaming ? `${base}src/assets/icons/Player_orange.svg` : `${base}src/assets/icons/label_orange.svg`
 
     const images    = themeImages[theme] ?? CODE_VIBES
     const pairCount = Math.min(size / 2, images.length)
@@ -195,10 +252,12 @@ function startGame(theme: string, player: Player, size: number) {
 
     const grid = document.getElementById('card-grid')!
     grid.innerHTML = ''
-    grid.dataset.size = String(size)
+    grid.dataset.size  = String(size)
+    grid.dataset.theme = theme
     grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
 
-    cardImages.forEach(src => grid.appendChild(createCard(src)))
+    const backSrc = themeBackImages[theme] ?? `${base}src/assets/icons/code_vibes_theme/back.svg`
+    cardImages.forEach(src => grid.appendChild(createCard(src, backSrc)))
 
     updateScores()
     updateCurrentPlayerIcon()
@@ -227,6 +286,6 @@ document.getElementById('exit-confirm')?.addEventListener('click', () => {
     exitOverlay.classList.remove('is-open')
     showScreen('welcome')
 })
-document.getElementById('play-again')?.addEventListener('click', () => showScreen('settings'))
+document.getElementById('back-to-start')?.addEventListener('click', () => showScreen('welcome'))
 
 showScreen('welcome')

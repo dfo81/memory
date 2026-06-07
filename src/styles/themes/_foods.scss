@@ -1,0 +1,68 @@
+@use "../base/variables" as *;
+@use "../base/fonts";
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  header {
+    display: flex;
+    background-color: #f0e5d9;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    width: 1020px;
+
+    .players {
+      font-size: 30px;
+      background-color: #fff;
+      gap: 40px;
+      padding: 8px 16px;
+      display: flex;
+      border-radius: 10px;
+      font-family: $font-theme-food;
+      font-weight: 700;
+
+      .orange {
+        color: #ea6900;
+        gap: 4px;
+      }
+      .blue {
+        color: #097fc5;
+        gap: 4px;
+      }
+      img {
+        height: 25px;
+      }
+    }
+
+    .current-player {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+
+      span {
+        font-family: $font-food;
+        font-size: 32px;
+        color: #a45212;
+      }
+
+      img {
+        height: 32px;
+        background-color: #097fc5;
+        padding: 4px 8px;
+        border-radius: 8px;
+      }
+    }
+
+    .exit {
+        cursor: pointer;
+    }
+  }
+/* 
+  .field {
+
+  } */
+}

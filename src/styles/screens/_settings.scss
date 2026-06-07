@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "../base/variables" as *;
 
 #settings {
   background-color: #ffffff;
@@ -89,7 +89,7 @@
       display: none;
 
       &:checked ~ .radio-icon {
-        background-image: url("../assets/icons/radio_active.svg");
+        background-image: url("/src/assets/icons/radio_active.svg");
       }
 
       &:checked ~ .option-indicator {
@@ -100,7 +100,7 @@
     .radio-icon {
       width: 22px;
       height: 22px;
-      background-image: url("../assets/icons/radio_default.svg");
+      background-image: url("/src/assets/icons/radio_default.svg");
       background-size: contain;
       background-repeat: no-repeat;
       flex-shrink: 0;

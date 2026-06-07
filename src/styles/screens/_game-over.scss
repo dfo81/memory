@@ -1,70 +1,65 @@
-@use "variables" as *;
+@use "../base/variables" as *;
+
+@keyframes slideOutUp {
+  from { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(-100vh); opacity: 0; }
+}
 
 #game_over {
-  z-index: 10;
-  display: grid;
-  place-items: center;
+  &.is-sliding-out {
+    animation: slideOutUp 0.6s cubic-bezier(0.4, 0, 1, 1) forwards;
+    pointer-events: none;
+  }
+}
 
-  .game-over__backdrop {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(#303131, 0.75);
+#game_over {
+  background-color: #303131;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  .game-over__title {
+    font-family: $font-display;
+    font-size: clamp(80px, 12vw, 160px);
+    font-weight: 700;
+    color: #86E9D6;
+    margin: 0;
+    line-height: 1;
+    text-shadow:
+      2px  2px 0 #3DB8A4,
+      4px  4px 0 #2E9080,
+      6px  6px 0 #1F6A5E,
+      8px  8px 0 #12443C,
+      10px 10px 0 #0A2C28;
   }
 
-  .game-over__card {
-    position: relative;
-    width: 540px;
-    background-color: #fff;
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-
-    h1 {
-      font-family: $font-display;
-      font-size: 52px;
-      font-weight: 700;
-      margin: 0;
-    }
+  .game-over__label {
+    font-family: $font-body;
+    font-size: 20px;
+    color: rgba(#fff, 0.7);
+    margin: 0;
   }
 
   .game-over__scores {
     display: flex;
-    gap: 40px;
-    font-family: $font-display;
-    font-size: 32px;
-    font-weight: 700;
+    background-color: #3A4E4C;
+    padding: 16px 28px;
+    gap: 32px;
   }
 
   .game-over__score {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: $font-display;
+    font-size: 28px;
+    font-weight: 700;
 
-    img { height: 28px; }
+    img { height: 24px; }
 
     &.blue   { color: #2bb1ff; }
     &.orange { color: #f58e39; }
-  }
-
-  #game-over-winner {
-    font-family: $font-body;
-    font-size: 20px;
-    margin: 0;
-    color: #1a1a1a;
-  }
-
-  #play-again {
-    font-family: $font-display;
-    font-size: 22px;
-    font-weight: 700;
-    padding: 14px 32px;
-    background-color: #f0ea6e;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-
-    &:hover { transform: scale(1.05); }
   }
 }

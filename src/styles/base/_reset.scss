@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

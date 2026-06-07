@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "../base/variables" as *;
 
 #welcome {
   height: 100%;
@@ -70,13 +70,13 @@
       }
 
       &::before {
-        background-image: url("../assets/icons/Arrow_default.svg");
+        background-image: url("/src/assets/icons/Arrow_default.svg");
         opacity: 1;
         transition: opacity 0.15s ease-in-out 0.15s;
       }
 
       &::after {
-        background-image: url("../assets/icons/Arrow_hover.svg");
+        background-image: url("/src/assets/icons/Arrow_hover.svg");
         opacity: 0;
         transition: opacity 0.15s ease-in-out 0s;
       }
