@@ -1,6 +1,11 @@
 @use "../base/variables" as *;
 @use "../base/fonts";
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -107,7 +112,7 @@ section {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background-color: #f6f6f6;
   border-radius: 20px;
   width: 456px;
@@ -124,7 +129,7 @@ section {
 
     .hover {
       position: absolute;
-      top: 1.5px;
+      top: 1.45px;
       left: 1px;
       opacity: 0;
 
@@ -143,5 +148,56 @@ section {
   .buttons {
     display: flex;
     gap: 24px;
+  }
+}
+
+.game_over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f3832d;
+  color: #fff;
+
+  h1 {
+    font-family: $font-food;
+    font-size: 130px;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .score {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+
+    span {
+      font-family: $font-food;
+      font-size: 42px;
+    }
+
+    .players {
+      font-size: 30px;
+      background-color: #fff;
+      gap: 40px;
+      padding: 8px 24px;
+      display: flex;
+      font-family: $font-theme-food;
+      font-weight: 700;
+
+      .orange {
+        color: #ea6900;
+        gap: 4px;
+      }
+      .blue {
+        color: #097fc5;
+        gap: 4px;
+      }
+      img {
+        height: 30px;
+      }
+    }
   }
 }
