@@ -78,18 +78,28 @@ const GAMING = [
     'Asset 19@2x 1','play button@2x 1',
 ].map(n => `${base}src/assets/icons/gaming_theme/${n.replace(/ /g, '%20')}.svg`)
 
+const FOODS = ['01','Artboard 3','Artboard 4','Artboard 5','Artboard 6','Artboard 7',
+    'Artboard 8','Artboard 9','Artboard 10','Artboard 11']
+    .map(n => `${base}src/assets/icons/foods_theme/${`${n}@3x 1`.replace(/ /g, '%20')}.svg`)
+
+// TODO(da-projects): once src/assets/icons/da_projects_theme/ holds the card SVGs,
+// list their file names here and switch themeImages['da-projects'] from CODE_VIBES
+// to DA_PROJECTS (and themeBackImages to the folder's back image).
+// const DA_PROJECTS = ['card1','card2', /* … */]
+//     .map(n => `${base}src/assets/icons/da_projects_theme/${n.replace(/ /g, '%20')}.svg`)
+
 const themeImages: Record<string, string[]> = {
     'it-logos':    CODE_VIBES,
     'gaming':      GAMING,
-    'da-projects': CODE_VIBES,
-    'foods':       CODE_VIBES,
+    'da-projects': CODE_VIBES, // TODO: → DA_PROJECTS
+    'foods':       FOODS,
 }
 
 const themeBackImages: Record<string, string> = {
     'it-logos':    `${base}src/assets/icons/code_vibes_theme/back.svg`,
     'gaming':      `${base}src/assets/icons/gaming_theme/back.svg`,
-    'da-projects': `${base}src/assets/icons/code_vibes_theme/back.svg`,
-    'foods':       `${base}src/assets/icons/code_vibes_theme/back.svg`,
+    'da-projects': `${base}src/assets/icons/code_vibes_theme/back.svg`, // TODO: → da_projects_theme/back
+    'foods':       `${base}src/assets/icons/foods_theme/back_logo.svg`,
 }
 
 // ── Game state ────────────────────────────────────────────────────────────────
@@ -119,12 +129,27 @@ function updateScores() {
     if (spans[1]) spans[1].textContent = String(scores.orange)
 }
 
+function playerIcon(player: Player): string {
+    switch (currentTheme) {
+        case 'gaming': return `${base}src/assets/icons/Player_${player}.svg`
+        case 'foods':  return `${base}src/assets/icons/foods_theme/chess_pawn_${player}.svg`
+        default:       return `${base}src/assets/icons/label_${player}.svg`
+    }
+}
+
+const playerColor: Record<Player, string> = { blue: '#097fc5', orange: '#ea6900' }
+
 function updateCurrentPlayerIcon() {
     const icon = document.getElementById('current-player-icon') as HTMLImageElement | null
     if (!icon) return
-    icon.src = currentTheme === 'gaming'
-        ? `${base}src/assets/icons/Player_${currentPlayer}.svg`
-        : `${base}src/assets/icons/label_${currentPlayer}.svg`
+    if (currentTheme === 'foods') {
+        // Neutral pawn figure on a pill tinted in the current player's colour.
+        icon.src = `${base}src/assets/icons/foods_theme/chess_pawn.svg`
+        icon.style.backgroundColor = playerColor[currentPlayer]
+    } else {
+        icon.src = playerIcon(currentPlayer)
+        icon.style.backgroundColor = ''
+    }
 }
 
 // ── Card logic ────────────────────────────────────────────────────────────────
@@ -201,17 +226,26 @@ function showWinner() {
         const iconEl     = document.getElementById('result-icon') as HTMLImageElement
         const confettiEl = document.getElementById('result-confetti')!
 
+        const isFoods = currentTheme === 'foods'
+
+        const backBtn = document.getElementById('back-to-start')
+        if (backBtn) backBtn.textContent = isFoods ? 'home' : 'Back to start'
+
         if (isDraw) {
             subtitleEl.textContent = "It's a"
             titleEl.textContent    = 'DRAW'
             titleEl.className      = 'result__title result__title--draw'
-            iconEl.src             = `${base}src/assets/icons/Scale_Icon.svg`
+            iconEl.src             = isFoods
+                ? `${base}src/assets/icons/foods_theme/Frame.svg`
+                : `${base}src/assets/icons/Scale_Icon.svg`
             confettiEl.classList.remove('is-visible')
         } else {
             subtitleEl.textContent = 'The winner is'
             titleEl.textContent    = winner === 'blue' ? 'BLUE PLAYER' : 'ORANGE PLAYER'
             titleEl.className      = `result__title result__title--${winner}`
-            iconEl.src             = `${base}src/assets/icons/Player_${winner}.svg`
+            iconEl.src             = isFoods
+                ? `${base}src/assets/icons/foods_theme/Frame_${winner}.svg`
+                : `${base}src/assets/icons/Player_${winner}.svg`
             confettiEl.classList.add('is-visible')
         }
 
@@ -236,12 +270,18 @@ function startGame(theme: string, player: Player, size: number) {
 
     const field = document.getElementById('field')!
     field.dataset.theme = theme
+    document.getElementById('game_over')!.dataset.theme = theme
+    document.getElementById('result')!.dataset.theme = theme
 
-    const isGaming = theme === 'gaming'
     const labelBlueImg   = document.querySelector<HTMLImageElement>('.label.blue img')
     const labelOrangeImg = document.querySelector<HTMLImageElement>('.label.orange img')
-    if (labelBlueImg)   labelBlueImg.src   = isGaming ? `${base}src/assets/icons/Player_blue.svg`   : `${base}src/assets/icons/label_blue.svg`
-    if (labelOrangeImg) labelOrangeImg.src = isGaming ? `${base}src/assets/icons/Player_orange.svg` : `${base}src/assets/icons/label_orange.svg`
+    if (labelBlueImg)   labelBlueImg.src   = playerIcon('blue')
+    if (labelOrangeImg) labelOrangeImg.src = playerIcon('orange')
+
+    const goBlueImg   = document.querySelector<HTMLImageElement>('.game-over__score.blue img')
+    const goOrangeImg = document.querySelector<HTMLImageElement>('.game-over__score.orange img')
+    if (goBlueImg)   goBlueImg.src   = playerIcon('blue')
+    if (goOrangeImg) goOrangeImg.src = playerIcon('orange')
 
     const images    = themeImages[theme] ?? CODE_VIBES
     const pairCount = Math.min(size / 2, images.length)

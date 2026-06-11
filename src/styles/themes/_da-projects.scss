@@ -1,0 +1,60 @@
+@use "../base/variables" as *;
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  DA PROJECTS THEME  ·  SCAFFOLD — fill in the design here
+//
+//  Activated via [data-theme="da-projects"] on #field, .card-grid, #game_over
+//  and #result (set in main.ts → startGame / showWinner).
+//  Keep every rule scoped under these selectors so the default themes stay
+//  untouched. See _gaming.scss / _foods.scss for worked examples.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Field (header: .labels, .current-player, .exit) ─────────────────────────────
+
+#field[data-theme="da-projects"] {
+  // background-color: ;
+
+  header {
+    // .labels { }
+    // .current-player img { }
+    // .exit { }
+  }
+}
+
+// ── Cards (.card, .card__face, .card__face--back, .is-matched) ───────────────────
+
+.card-grid[data-theme="da-projects"] {
+  // .card { }
+  // .card__face { }
+  // .card__face--back { }
+  // .card.is-matched { }
+}
+
+// ── Exit overlay (slide-up sheet) ───────────────────────────────────────────────
+
+#field[data-theme="da-projects"] ~ .exit-overlay {
+  // .exit-overlay__sheet { }
+  // .exit-overlay__title { }
+  // #exit-cancel { }
+  // #exit-confirm { }
+}
+
+// ── Game over (#game_over → .game-over__title / __label / __scores / __score) ────
+
+#game_over[data-theme="da-projects"] {
+  // background-color: ;
+  // .game-over__title { }
+  // .game-over__label { }
+  // .game-over__scores { }
+  // .game-over__score { &.blue {} &.orange {} }
+}
+
+// ── Result (winner / draw → .result__subtitle / __title / __icon / __btn) ────────
+
+#result[data-theme="da-projects"] {
+  // background-color: ;
+  // .result__subtitle { }
+  // .result__title { &--blue {} &--orange {} &--draw {} }
+  // .result__icon { }
+  // .result__btn { }
+}
