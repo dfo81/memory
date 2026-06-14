@@ -1,0 +1,129 @@
+@use "../base/variables" as *;
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  CODE VIBES THEME
+//  Activated via [data-theme="code-vibes"] on #field, .card-grid, #game_over and
+//  #result. Fully isolated — never affects the other themes.
+//
+//  This is the original default look, now extracted into its own theme so all
+//  four themes are independent. The base/ files keep only the neutral skeleton
+//  (layout + universal player colours); every code-vibes accent lives here.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Field (header: .labels, .current-player, .exit) ─────────────────────────────
+
+#field[data-theme="code-vibes"] {
+  background-color: #303131;
+
+  header {
+    .exit {
+      background-color: #86e9d633;
+      border: 3px solid #4DD5BC;
+
+      &:hover {
+        background-color: #86E9D642;
+        box-shadow: 4px 4px 6px 0 rgba(#4DD5BC, 33);
+      }
+    }
+  }
+
+  .labels {
+    background-color: #86e9d633;
+  }
+}
+
+// ── Cards (.card__face, .card__face--back, .is-matched) ──────────────────────────
+
+.card-grid[data-theme="code-vibes"] {
+  .card__face {
+    background-color: #E8F3F0;
+
+    &--back {
+      background-color: #1e2020;
+    }
+  }
+
+  .card.is-matched {
+    box-shadow: 6px 6px 8px 0 rgba(#4DD5BC, 0.30);
+    border: 5px solid #4DD5BC;
+    border-radius: 5px;
+  }
+}
+
+// ── Exit overlay (slide-up sheet) ───────────────────────────────────────────────
+
+#field[data-theme="code-vibes"] ~ .exit-overlay {
+  .exit-overlay__actions {
+    #exit-cancel {
+      background-color: #4DD5BC;
+      border: none;
+      color: #fff;
+    }
+
+    #exit-confirm {
+      background-color: transparent;
+      border: 2px solid #4DD5BC;
+      color: #4DD5BC;
+    }
+  }
+}
+
+// ── Game over (.game-over__title / __label / __scores) ───────────────────────────
+
+#game_over[data-theme="code-vibes"] {
+  background-color: #303131;
+
+  .game-over__title {
+    color: #86E9D6;
+    text-shadow:
+      2px  2px 0 #3DB8A4,
+      4px  4px 0 #2E9080,
+      6px  6px 0 #1F6A5E,
+      8px  8px 0 #12443C,
+      10px 10px 0 #0A2C28;
+  }
+
+  .game-over__label {
+    color: rgba(#fff, 0.7);
+  }
+
+  .game-over__scores {
+    background-color: #3A4E4C;
+  }
+}
+
+// ── Result (winner / draw → CSS tokens defined in screens/_result.scss) ──────────
+
+#result[data-theme="code-vibes"] {
+  --result-bg: #303131;
+  --result-body-gap: 32px;
+
+  --result-subtitle-font: #{$font-main};
+  --result-subtitle-size: 40px;
+  --result-subtitle-weight: 400;
+  --result-subtitle-color: #fff;
+
+  --result-title-font: #{$font-main};
+  --result-title-size: 128px;
+  --result-title-blue: #2bb1ff;
+  --result-title-orange: #f58e39;
+  --result-title-draw-font: #{$font-main};
+  --result-title-draw-color: #86e9d6;
+  --result-title-draw-shadow: -7px -3px 8px #4DD5BC80;
+
+  --result-icon-size: 272px;
+  --result-icon-shadow: none;
+
+  --result-btn-font: #{$font-main};
+  --result-btn-size: 24px;
+  --result-btn-bg: #86E9D624;
+  --result-btn-fg: #fff;
+  --result-btn-border: 2px solid #4dd5bc;
+  --result-btn-padding: 14px 40px;
+  --result-btn-radius: 0;
+  --result-btn-shadow: none;
+  
+  --result-btn-hover-shadow: 4px 4px 6px 0 #4DD5BC33;
+  --result-btn-hover-bg: #86E9D642;
+  --result-btn-hover-fg: #fff;
+}

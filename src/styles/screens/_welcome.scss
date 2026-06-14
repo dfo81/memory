@@ -21,7 +21,7 @@
     flex-direction: column;
 
     h1 {
-      font-family: $font-display;
+      font-family: $font-main;
       font-size: 140px;
       font-weight: 700;
       color: white;
@@ -44,7 +44,7 @@
     padding: 24px;
     background-color: #f0ea6e;
     gap: 20px;
-    font-family: $font-display;
+    font-family: $font-main;
     font-size: 40px;
     transition: transform 0.2s ease-in-out;
 
@@ -70,13 +70,13 @@
       }
 
       &::before {
-        background-image: url("/src/assets/icons/Arrow_default.svg");
+        background-image: url("/src/assets/icons/general/Arrow_default.svg");
         opacity: 1;
         transition: opacity 0.15s ease-in-out 0.15s;
       }
 
       &::after {
-        background-image: url("/src/assets/icons/Arrow_hover.svg");
+        background-image: url("/src/assets/icons/general/Arrow_hover.svg");
         opacity: 0;
         transition: opacity 0.15s ease-in-out 0s;
       }

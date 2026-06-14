@@ -21,18 +21,12 @@
   gap: 40px;
 
   .game-over__title {
-    font-family: $font-display;
+    font-family: $font-main;
     font-size: clamp(80px, 12vw, 160px);
     font-weight: 700;
-    color: #86E9D6;
+    color: #fff;
     margin: 0;
     line-height: 1;
-    text-shadow:
-      2px  2px 0 #3DB8A4,
-      4px  4px 0 #2E9080,
-      6px  6px 0 #1F6A5E,
-      8px  8px 0 #12443C,
-      10px 10px 0 #0A2C28;
   }
 
   .game-over__label {
@@ -44,7 +38,7 @@
 
   .game-over__scores {
     display: flex;
-    background-color: #3A4E4C;
+    background-color: #444;
     padding: 16px 28px;
     gap: 32px;
   }
@@ -53,7 +47,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: $font-display;
+    font-family: $font-main;
     font-size: 28px;
     font-weight: 700;
 

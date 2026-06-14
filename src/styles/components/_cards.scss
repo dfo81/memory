@@ -25,7 +25,7 @@
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
-    background-color: #E8F3F0;
+    background-color: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,9 +55,9 @@
   }
 
   &.is-matched {
-    box-shadow: 6px 6px 8px 0 rgba(#4DD5BC, 0.30);
+    box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.30);
     pointer-events: none;
-    border: 5px solid #4DD5BC;
+    border: 5px solid #888;
     border-radius: 5px;
   }
 }

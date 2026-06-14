@@ -12,7 +12,7 @@
 }
 
 #result {
-  background-color: #303131;
+  background-color: var(--result-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,53 +43,66 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 64px;
+  }
+
+  .result__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
 
   .result__subtitle {
-    font-family: $font-body;
-    font-size: 24px;
-    color: #fff;
+    font-family: var(--result-subtitle-font);
+    font-size: var(--result-subtitle-size);
+    color: var(--result-subtitle-color);
+    font-weight: var(--result-subtitle-weight);
     margin: 0;
   }
 
   .result__title {
-    font-family: $font-display;
-    font-size: 72px;
+    font-family: var(--result-title-font);
+    font-size: var(--result-title-size);
     font-weight: 700;
-    margin: 0;
     text-transform: uppercase;
 
-    &--blue   { color: #2bb1ff; }
-    &--orange { color: #f58e39; }
+    &--blue   { color: var(--result-title-blue); }
+    &--orange { color: var(--result-title-orange); }
 
     &--draw {
-      color: #86E9D6;
-      text-shadow:
-        2px  2px 0 #3DB8A4,
-        4px  4px 0 #2E9080,
-        6px  6px 0 #1F6A5E,
-        8px  8px 0 #12443C,
-        10px 10px 0 #0A2C28;
+      font-family: var(--result-title-draw-font);
+      color: var(--result-title-draw-color);
+      text-shadow: var(--result-title-draw-shadow);
+      letter-spacing: var(--result-title-draw-spacing);
     }
   }
 
   .result__icon {
-    height: 180px;
+    height: var(--result-icon-size);
     width: auto;
+    box-shadow: var(--result-icon-shadow);
   }
 
   .result__btn {
-    font-family: $font-display;
-    font-size: 20px;
+    font-family: var(--result-btn-font);
+    font-size: var(--result-btn-size);
     font-weight: 700;
-    color: #fff;
-    background-color: #3A4E4C;
-    border: 2px solid #4DD5BC;
-    padding: 14px 40px;
+    color: var(--result-btn-fg);
+    background-color: var(--result-btn-bg);
+    border: var(--result-btn-border);
+    border-radius: var(--result-btn-radius);
+    box-shadow: var(--result-btn-shadow);
+    padding: var(--result-btn-padding);
     cursor: pointer;
-    transition: background-color 0.2s;
 
-    &:hover { background-color: #4D6360; }
+    &:hover {
+      background-color: var(--result-btn-hover-bg);
+      box-shadow: var(--result-btn-hover-shadow);
+      color: var(--result-btn-hover-fg);
+      border: var(--result-btn-border);
+    }
+
+    &:active { box-shadow: none; }
   }
 }

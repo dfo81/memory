@@ -23,10 +23,10 @@ function showScreen(screen: Screen) {
 document.getElementById('play-button')?.addEventListener('click', () => showScreen('settings'))
 
 const themePreviewMap: Record<string, string> = {
-    'it-logos':    `${base}src/assets/icons/theme=IT logos.svg`,
-    'gaming':      `${base}src/assets/icons/theme=gameing.svg`,
-    'da-projects': `${base}src/assets/icons/theme=DA projects.svg`,
-    'foods':       `${base}src/assets/icons/theme=foods.svg`,
+    'code-vibes':  `${base}src/assets/icons/general/theme_code-vibes.svg`,
+    'gaming':      `${base}src/assets/icons/general/theme_gaming.svg`,
+    'da-projects': `${base}src/assets/icons/general/theme_da-projects.svg`,
+    'foods':       `${base}src/assets/icons/general/theme_foods.svg`,
 }
 
 document.querySelectorAll<HTMLInputElement>('input[name="theme"]').forEach(input => {
@@ -36,8 +36,8 @@ document.querySelectorAll<HTMLInputElement>('input[name="theme"]').forEach(input
     })
 })
 
-const lineDefault = `${base}src/assets/icons/Line_vertikal_default.svg`
-const lineActive  = `${base}src/assets/icons/Line_vertikal_active.svg`
+const lineDefault = `${base}src/assets/icons/general/Line_vertikal_default.svg`
+const lineActive  = `${base}src/assets/icons/general/Line_vertikal_active.svg`
 const playerLabels: Record<string, string> = { blue: 'Blue Player', orange: 'Orange Player' }
 const sizeLabels: Record<string, string>   = { '16': 'Board-16 Cards', '24': 'Board-24 Cards', '36': 'Board-36 Cards' }
 
@@ -66,37 +66,33 @@ document.querySelectorAll<HTMLInputElement>('input[name="player"], input[name="s
 
 // ── Theme images ──────────────────────────────────────────────────────────────
 
-const CODE_VIBES = ['angular','bootstrap','css','django','firebase','git','github','html',
-    'javascript','nodejs','python','react','sass','sql','terminal','typescript','vscode','vue']
-    .map(n => `${base}src/assets/icons/code_vibes_theme/${n}.svg`)
+// Card fronts are auto-loaded from each theme's cards/ folder — drop an SVG in
+// and it becomes a card, no list to maintain. Vite returns hashed, build-safe URLs.
+const cardModules = import.meta.glob('./assets/icons/*/cards/*.svg', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+}) as Record<string, string>
 
-const GAMING = [
-    'Asset 3@2x 1','Asset 4@2x 1','Asset 5@2x 1','Asset 6@2x 1',
-    'Asset 8@2x 1','Asset 8@2x 2','Asset 9@2x 1','Asset 10@2x 1',
-    'Asset 11@2x 1','Asset 12@2x 1','Asset 13@2x 1','Asset 14@2x 1',
-    'Asset 15@2x 1','Asset 16@2x 1','Asset 17@2x 1','Asset 18@2x 1',
-    'Asset 19@2x 1','play button@2x 1',
-].map(n => `${base}src/assets/icons/gaming_theme/${n.replace(/ /g, '%20')}.svg`)
-
-const FOODS = ['01','Artboard 3','Artboard 4','Artboard 5','Artboard 6','Artboard 7',
-    'Artboard 8','Artboard 9','Artboard 10','Artboard 11']
-    .map(n => `${base}src/assets/icons/foods_theme/${`${n}@3x 1`.replace(/ /g, '%20')}.svg`)
-
-// TODO(da-projects): once src/assets/icons/da_projects_theme/ holds the card SVGs,
-// list their file names here and switch themeImages['da-projects'] from CODE_VIBES
-// to DA_PROJECTS (and themeBackImages to the folder's back image).
-// const DA_PROJECTS = ['card1','card2', /* … */]
-//     .map(n => `${base}src/assets/icons/da_projects_theme/${n.replace(/ /g, '%20')}.svg`)
-
-const themeImages: Record<string, string[]> = {
-    'it-logos':    CODE_VIBES,
-    'gaming':      GAMING,
-    'da-projects': CODE_VIBES, // TODO: → DA_PROJECTS
-    'foods':       FOODS,
+const FOLDER_TO_THEME: Record<string, string> = {
+    code_vibes_theme:  'code-vibes',
+    gaming_theme:      'gaming',
+    da_projects_theme: 'da-projects',
+    foods_theme:       'foods',
 }
 
+const themeImages: Record<string, string[]> = {}
+for (const [path, url] of Object.entries(cardModules)) {
+    const folder = path.match(/icons\/([^/]+)\/cards\//)?.[1]
+    const key = folder ? FOLDER_TO_THEME[folder] : undefined
+    if (key) (themeImages[key] ??= []).push(url)
+}
+
+// da-projects has no card art yet → fall back to the code-vibes deck for now.
+themeImages['da-projects'] ??= themeImages['code-vibes']
+
 const themeBackImages: Record<string, string> = {
-    'it-logos':    `${base}src/assets/icons/code_vibes_theme/back.svg`,
+    'code-vibes':  `${base}src/assets/icons/code_vibes_theme/back.svg`,
     'gaming':      `${base}src/assets/icons/gaming_theme/back.svg`,
     'da-projects': `${base}src/assets/icons/code_vibes_theme/back.svg`, // TODO: → da_projects_theme/back
     'foods':       `${base}src/assets/icons/foods_theme/back_logo.svg`,
@@ -108,7 +104,7 @@ let flippedCards: HTMLButtonElement[] = []
 let lockBoard = false
 let scores: Record<Player, number> = { blue: 0, orange: 0 }
 let currentPlayer: Player = 'blue'
-let currentTheme = 'it-logos'
+let currentTheme = 'code-vibes'
 let totalPairs = 0
 let matchedPairs = 0
 
@@ -131,9 +127,9 @@ function updateScores() {
 
 function playerIcon(player: Player): string {
     switch (currentTheme) {
-        case 'gaming': return `${base}src/assets/icons/Player_${player}.svg`
+        case 'gaming': return `${base}src/assets/icons/general/Player_${player}.svg`
         case 'foods':  return `${base}src/assets/icons/foods_theme/chess_pawn_${player}.svg`
-        default:       return `${base}src/assets/icons/label_${player}.svg`
+        default:       return `${base}src/assets/icons/general/label_${player}.svg`
     }
 }
 
@@ -161,10 +157,10 @@ function createCard(imageSrc: string, backSrc: string): HTMLButtonElement {
     card.innerHTML = `
         <div class="card__inner">
             <div class="card__face">
-                <img src="${imageSrc}" alt="" />
+                <img src="${imageSrc}" alt="" draggable="false" />
             </div>
             <div class="card__face card__face--back">
-                <img src="${backSrc}" alt="" />
+                <img src="${backSrc}" alt="" draggable="false" />
             </div>
         </div>`
     card.addEventListener('click', () => onCardClick(card))
@@ -208,6 +204,33 @@ function checkMatch() {
     }
 }
 
+// ── Result/Draw-Screen: ein Eintrag pro Theme (Button-Text + Icons) ─────────────
+// Visuelles steckt in den CSS-Tokens (#result[data-theme]); hier nur Inhalt/Assets.
+type ResultTheme = {
+    backLabel: string
+    drawIcon: string
+    winnerIcon: (winner: Player) => string
+}
+
+const DEFAULT_RESULT: ResultTheme = {
+    backLabel: 'Home',
+    drawIcon: `${base}src/assets/icons/general/scale_code-vibes.svg`,
+    winnerIcon: (w) => `${base}src/assets/icons/general/Player_${w}.svg`,
+}
+
+const RESULT_THEMES: Record<string, Partial<ResultTheme>> = {
+    'code-vibes': {
+        backLabel: 'Back to start',
+    },
+    foods: {
+        drawIcon: `${base}src/assets/icons/general/scale_foods.svg`,
+        winnerIcon: (w) => `${base}src/assets/icons/foods_theme/Frame_${w}.svg`,
+    },
+    'da-projects': {
+        drawIcon: `${base}src/assets/icons/general/scale_da-projects.svg`,
+    },
+}
+
 function showWinner() {
     const blueEl   = document.getElementById('final-score-blue')
     const orangeEl = document.getElementById('final-score-orange')
@@ -226,26 +249,22 @@ function showWinner() {
         const iconEl     = document.getElementById('result-icon') as HTMLImageElement
         const confettiEl = document.getElementById('result-confetti')!
 
-        const isFoods = currentTheme === 'foods'
+        const result = { ...DEFAULT_RESULT, ...(RESULT_THEMES[currentTheme] ?? {}) }
 
         const backBtn = document.getElementById('back-to-start')
-        if (backBtn) backBtn.textContent = isFoods ? 'home' : 'Back to start'
+        if (backBtn) backBtn.textContent = result.backLabel
 
         if (isDraw) {
             subtitleEl.textContent = "It's a"
             titleEl.textContent    = 'DRAW'
             titleEl.className      = 'result__title result__title--draw'
-            iconEl.src             = isFoods
-                ? `${base}src/assets/icons/foods_theme/Frame.svg`
-                : `${base}src/assets/icons/Scale_Icon.svg`
+            iconEl.src             = result.drawIcon
             confettiEl.classList.remove('is-visible')
         } else {
             subtitleEl.textContent = 'The winner is'
             titleEl.textContent    = winner === 'blue' ? 'BLUE PLAYER' : 'ORANGE PLAYER'
             titleEl.className      = `result__title result__title--${winner}`
-            iconEl.src             = isFoods
-                ? `${base}src/assets/icons/foods_theme/Frame_${winner}.svg`
-                : `${base}src/assets/icons/Player_${winner}.svg`
+            iconEl.src             = result.winnerIcon(winner!)
             confettiEl.classList.add('is-visible')
         }
 
@@ -283,7 +302,7 @@ function startGame(theme: string, player: Player, size: number) {
     if (goBlueImg)   goBlueImg.src   = playerIcon('blue')
     if (goOrangeImg) goOrangeImg.src = playerIcon('orange')
 
-    const images    = themeImages[theme] ?? CODE_VIBES
+    const images    = themeImages[theme] ?? themeImages['code-vibes']
     const pairCount = Math.min(size / 2, images.length)
     totalPairs      = pairCount
 
@@ -326,6 +345,6 @@ document.getElementById('exit-confirm')?.addEventListener('click', () => {
     exitOverlay.classList.remove('is-open')
     showScreen('welcome')
 })
-document.getElementById('back-to-start')?.addEventListener('click', () => showScreen('welcome'))
+document.getElementById('back-to-start')?.addEventListener('click', () => showScreen('settings'))
 
 showScreen('welcome')

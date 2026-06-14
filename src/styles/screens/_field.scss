@@ -19,7 +19,7 @@
     flex-shrink: 0;
 
     span {
-      font-family: $font-display;
+      font-family: $font-main;
       font-size: 24px;
       font-weight: 700;
     }
@@ -39,14 +39,14 @@
       align-items: center;
       padding: 17px 20px;
       gap: 4px;
-      background-color: #86e9d633;
+      background-color: rgba(#fff, 0.08);
       cursor: pointer;
-      border: 3px solid #4DD5BC;
+      border: 3px solid rgba(#fff, 0.2);
       transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
       &:hover {
-        background-color: #86E9D642;
-        box-shadow: 4px 4px 6px 0 rgba(#4DD5BC, 33);
+        background-color: rgba(#fff, 0.12);
+        box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
       }
     }
   }
@@ -55,7 +55,7 @@
     display: flex;
     padding: 17px 20px;
     gap: 20px;
-    background-color: #86e9d633;
+    background-color: rgba(#fff, 0.08);
 
     .label {
       display: flex;

@@ -4,6 +4,13 @@ body {
   height: 100vh;
 }
 
+// Prevent the native image ghost-drag when clicking/holding an image.
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .screen {
   position: fixed;
   inset: 0;

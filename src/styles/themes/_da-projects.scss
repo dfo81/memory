@@ -12,7 +12,7 @@
 // ── Field (header: .labels, .current-player, .exit) ─────────────────────────────
 
 #field[data-theme="da-projects"] {
-  // background-color: ;
+  background-color: #1E7594;
 
   header {
     // .labels { }
@@ -37,6 +37,7 @@
   // .exit-overlay__title { }
   // #exit-cancel { }
   // #exit-confirm { }
+  
 }
 
 // ── Game over (#game_over → .game-over__title / __label / __scores / __score) ────
@@ -52,9 +53,31 @@
 // ── Result (winner / draw → .result__subtitle / __title / __icon / __btn) ────────
 
 #result[data-theme="da-projects"] {
-  // background-color: ;
-  // .result__subtitle { }
-  // .result__title { &--blue {} &--orange {} &--draw {} }
+  --result-bg: #1E7594;
+
+  --result-subtitle-font: #{$font-da-projects};
+  --result-subtitle-size: 40px;
+  --result-subtitle-weight: 400;
+  --result-subtitle-color: #fff;
+  
+  --result-title-font: #{$font-da-projects};
+  --result-title-size: 128px;
+  --result-title-blue: #a45212;
+  --result-title-orange: #a45212;
+  --result-title-draw-font: #{$font-da-projects};
+  --result-title-draw-color: #FD5B4F;
+  --result-title-draw-shadow: 0 4px 4px #00000040;
   // .result__icon { }
-  // .result__btn { }
+  --result-btn-font: #{$font-da-projects};
+  --result-btn-bg: #BFE5F2;
+  --result-btn-fg: #1E7594;
+  --result-btn-border: none;
+  --result-btn-padding: 12px 20px;
+  --result-btn-radius: 10px;
+  --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+
+  --result-btn-hover-bg: #1E7594;
+  --result-btn-hover-fg: #BFE5F2;
+  --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);;
+  --result-btn-border: 1px solid #BFE5F2;
 }
