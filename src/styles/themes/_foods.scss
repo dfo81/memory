@@ -210,14 +210,13 @@
 
 #result[data-theme="foods"] {
   --result-bg: #f6f6f6;
-  --result-body-gap: 64px;
 
-  --result-subtitle-font: #{$font-second-food};
+  --result-subtitle-font: #{$font-main-food};
   --result-subtitle-size: 40px;
-  --result-subtitle-color: #a45212;
+  --result-subtitle-color: #F3832D;
 
   --result-title-font: #{$font-second-food};
-  --result-title-size: 80px;
+  --result-title-size: 128px;
   --result-title-blue: #a45212;
   --result-title-orange: #a45212;
   --result-title-draw-font: #{$font-main-food};
@@ -227,10 +226,10 @@
   --result-icon-size: 298px;
   --result-icon-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
-  --result-btn-font: #{$font-main-food};
+  --result-btn-font: #{$font-second-food};
   --result-btn-bg: #f3832d;
   --result-btn-fg: #fff;
-  --result-btn-border: none;
+  --result-btn-border: 2px solid #f3832d;
   --result-btn-padding: 12px 20px;
   --result-btn-radius: 10px;
   --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
@@ -238,4 +237,5 @@
   --result-btn-hover-bg: #fff;
   --result-btn-hover-fg: #f3832d;
   --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  --result-btn-hover-border: 2px solid #f3832d;
 }

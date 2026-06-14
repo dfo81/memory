@@ -123,7 +123,6 @@
 
 #result[data-theme="gaming"] {
   --result-bg: #294F60;
-  --result-body-gap: 64px;
 
   --result-subtitle-font: #{$font-gaming};
   --result-subtitle-size: 28px;
@@ -141,15 +140,17 @@
   --result-icon-size: 298px;
   --result-icon-shadow: none;
 
-  --result-btn-font: #{$font-main-food};
-  --result-btn-bg: #f3832d;
+  --result-btn-font: #{$font-gaming};
+  --result-btn-font-spacing: 4%;
+  --result-btn-bg: #ED1B7614;
   --result-btn-fg: #fff;
-  --result-btn-border: none;
+  --result-btn-border: 2px solid #E71C4F;
   --result-btn-padding: 12px 20px;
   --result-btn-radius: 10px;
   --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 
-  --result-btn-hover-bg: #fff;
-  --result-btn-hover-fg: #f3832d;
+  --result-btn-hover-bg: #ED1B76;
+  --result-btn-hover-fg: #fff;
   --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  --result-btn-hover-border: 2px solid #fff;
 }

@@ -66,6 +66,9 @@
     font-size: var(--result-title-size);
     font-weight: 700;
     text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    padding-bottom: 16px;
 
     &--blue   { color: var(--result-title-blue); }
     &--orange { color: var(--result-title-orange); }
@@ -79,7 +82,7 @@
   }
 
   .result__icon {
-    height: var(--result-icon-size);
+    height: 300px;
     width: auto;
     box-shadow: var(--result-icon-shadow);
   }
@@ -87,6 +90,7 @@
   .result__btn {
     font-family: var(--result-btn-font);
     font-size: var(--result-btn-size);
+    letter-spacing: var(--result-btn-font-spacing);
     font-weight: 700;
     color: var(--result-btn-fg);
     background-color: var(--result-btn-bg);
@@ -100,7 +104,7 @@
       background-color: var(--result-btn-hover-bg);
       box-shadow: var(--result-btn-hover-shadow);
       color: var(--result-btn-hover-fg);
-      border: var(--result-btn-border);
+      border: var(--result-btn-hover-border);
     }
 
     &:active { box-shadow: none; }

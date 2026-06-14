@@ -96,7 +96,6 @@
 
 #result[data-theme="code-vibes"] {
   --result-bg: #303131;
-  --result-body-gap: 32px;
 
   --result-subtitle-font: #{$font-main};
   --result-subtitle-size: 40px;
@@ -111,7 +110,6 @@
   --result-title-draw-color: #86e9d6;
   --result-title-draw-shadow: -7px -3px 8px #4DD5BC80;
 
-  --result-icon-size: 272px;
   --result-icon-shadow: none;
 
   --result-btn-font: #{$font-main};
@@ -126,4 +124,5 @@
   --result-btn-hover-shadow: 4px 4px 6px 0 #4DD5BC33;
   --result-btn-hover-bg: #86E9D642;
   --result-btn-hover-fg: #fff;
+  --result-btn-hover-border: 2px solid #4dd5bc;
 }

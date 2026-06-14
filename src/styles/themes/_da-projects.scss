@@ -69,15 +69,16 @@
   --result-title-draw-shadow: 0 4px 4px #00000040;
   // .result__icon { }
   --result-btn-font: #{$font-da-projects};
+  --result-btn-size: 20px;
   --result-btn-bg: #BFE5F2;
   --result-btn-fg: #1E7594;
-  --result-btn-border: none;
+  --result-btn-border: 2px solid #BFE5F2;
   --result-btn-padding: 12px 20px;
   --result-btn-radius: 10px;
   --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 
-  --result-btn-hover-bg: #1E7594;
+  --result-btn-hover-bg: #FD5B4F;
   --result-btn-hover-fg: #BFE5F2;
   --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);;
-  --result-btn-border: 1px solid #BFE5F2;
+  --result-btn-hover-border: 2px solid #BFE5F2;
 }
