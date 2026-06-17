@@ -66,17 +66,21 @@
     font-family: var(--result-title-font);
     font-size: var(--result-title-size);
     font-weight: 700;
-    text-transform: uppercase;
     margin: 0;
     line-height: 1;
     padding-bottom: 16px;
 
-    &--blue   { color: var(--result-title-blue); }
-    &--orange { color: var(--result-title-orange); }
+    &--blue {
+      color: var(--result-title-blue);
+    }
+    &--orange {
+      color: var(--result-title-orange);
+    }
 
     &--draw {
       font-family: var(--result-title-draw-font);
       color: var(--result-title-draw-color);
+      font-size: var(--result-title-draw-size);
       text-shadow: var(--result-title-draw-shadow);
       letter-spacing: var(--result-title-draw-spacing);
     }
@@ -108,6 +112,8 @@
       border: var(--result-btn-hover-border);
     }
 
-    &:active { box-shadow: none; }
+    &:active {
+      box-shadow: none;
+    }
   }
 }

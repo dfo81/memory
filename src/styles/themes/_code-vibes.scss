@@ -81,6 +81,8 @@
       6px  6px 0 #1F6A5E,
       8px  8px 0 #12443C,
       10px 10px 0 #0A2C28;
+    // 124px Abstand zwischen Überschrift und Rest (40px Container-gap + 84px)
+    margin-bottom: 84px;
   }
 
   .game-over__label {
@@ -103,10 +105,11 @@
   --result-subtitle-color: #fff;
 
   --result-title-font: #{$font-main};
-  --result-title-size: 128px;
+  --result-title-size: 60px;
   --result-title-blue: #2bb1ff;
   --result-title-orange: #f58e39;
   --result-title-draw-font: #{$font-main};
+  --result-title-draw-size: 128px;
   --result-title-draw-color: #86e9d6;
   --result-title-draw-shadow: -7px -3px 8px #4DD5BC80;
 

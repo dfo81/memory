@@ -8,18 +8,36 @@
     
   </head>
   <body>
-    <section id="result" class="screen is-active" data-theme="code-vibes">
-      <div class="result__body">
-        <div class="result__text">
-          <p class="result__subtitle" id="result-subtitle">It's a</p>
-          <h2 class="result__title result__title--draw" id="result-title">DRAW</h2>
-          <img class="result__icon" id="result-icon" src="/src/assets/icons/code_vibes_theme/scale.svg" alt="" />
+    
+    
+    
+    
+    
+    
+    <section id="game_over" class="screen is-active" data-theme="code-vibes">
+      <h1 class="game-over__title">Game over</h1>
+      <p class="game-over__label">Final score</p>
+      <div class="game-over__scores">
+        <div class="game-over__score blue">
+          <img src="/src/assets/icons/general/label_blue.svg" alt="" />
+          <span>Blue</span>
+          <span id="final-score-blue">0</span>
         </div>
-        <button class="result__btn" id="back-to-start">Back to start</button>
+        <div class="game-over__score orange">
+          <img src="/src/assets/icons/general/label_orange.svg" alt="" />
+          <span>Orange</span>
+          <span id="final-score-orange">0</span>
+        </div>
       </div>
     </section>
+  
+  
+  
+  
+  
+  
+  
   </body>
-
   <script type="module">
       import "./src/styles/style.scss";
     </script>

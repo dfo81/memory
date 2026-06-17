@@ -61,12 +61,13 @@
   --result-subtitle-color: #fff;
   
   --result-title-font: #{$font-da-projects};
-  --result-title-size: 128px;
-  --result-title-blue: #a45212;
-  --result-title-orange: #a45212;
+  --result-title-size: 80px;
+  --result-title-blue: #fff;
+  --result-title-orange: #fff;
   --result-title-draw-font: #{$font-da-projects};
   --result-title-draw-color: #FD5B4F;
   --result-title-draw-shadow: 0 4px 4px #00000040;
+  --result-title-draw-size: 128px;
   // .result__icon { }
   --result-btn-font: #{$font-da-projects};
   --result-btn-size: 20px;
