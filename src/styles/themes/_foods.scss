@@ -3,16 +3,27 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 //  FOODS THEME
 //  Activated via [data-theme="foods"] on #field, .card-grid, #game_over and
-//  #result. Fully isolated — never affects the default themes.
-//
-//  Values mirror the original foods prototype 1:1, remapped onto the live DOM.
+//  #result. Values live in CSS tokens; the foods-specific structural pieces
+//  (header box, image exit, label layout, matched cover art) stay as rules.
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ── Field ──────────────────────────────────────────────────────────────────────
-
+// ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="foods"] {
-  background-color: #fff;
-  gap: 54px;
+  --field-bg: #fff;
+  --field-gap: 54px;
+  --field-text-color: #fff;
+  --field-header-font: #{$font-main};
+
+  --field-labels-bg: #fff;
+  --field-labels-border: none;
+  --field-label-blue: #097fc5;
+  --field-label-orange: #ea6900;
+
+  // foods exit is fully restyled below; keep tokens neutral
+  --field-exit-bg: transparent;
+  --field-exit-border: none;
+  --field-exit-hover-bg: transparent;
+  --field-exit-hover-shadow: none;
 
   header {
     background-color: #f0e5d9;
@@ -22,7 +33,6 @@
 
     .labels {
       font-size: 30px;
-      background-color: #fff;
       gap: 40px;
       padding: 8px 16px;
       border-radius: 10px;
@@ -32,8 +42,6 @@
       .label { gap: 4px; }
       .label img { height: 25px; }
       .label span:not(.score) { display: none; }  // only figure + number
-      .orange { color: #ea6900; }
-      .blue   { color: #097fc5; }
     }
 
     .current-player {
@@ -58,8 +66,6 @@
       position: relative;
       width: 176px;
       height: 49px;
-      background-color: transparent;
-      border: none;
       padding: 0;
 
       > img,
@@ -88,7 +94,6 @@
       }
 
       &:hover {
-        background-color: transparent;
         box-shadow: none;
 
         &::after { opacity: 1; }
@@ -97,119 +102,85 @@
   }
 }
 
-// ── Cards ──────────────────────────────────────────────────────────────────────
-
+// ── Cards ────────────────────────────────────────────────────────────────────
 .card-grid[data-theme="foods"] {
+  --card-face-bg: #f4ece4;
+  --card-face-back-bg: #f3832d;
+  --card-face-radius: 0;
+  --card-matched-border: none;
+  --card-matched-shadow: none;
+  --card-matched-radius: 0;
+
   .card {
     width: 122px;
     height: 122px;
     aspect-ratio: unset;
   }
 
-  .card__face {
-    background-color: #f4ece4;
-    border-radius: 0;
-
-    &--back {
-      background-color: #f3832d;
-
-      img {
-        width: 70%;
-        height: 70%;
-        object-fit: contain;
-      }
-    }
+  .card__face--back img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
   }
 
   // Matched cards get the orange-framed cover behind the food — no border.
-  .card.is-matched {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-
-    .card__face:not(.card__face--back) {
-      background-color: transparent;
-      background-image: url("../../assets/icons/foods_theme/orange_cover.svg");
-      background-size: cover;
-      background-position: center;
-    }
+  .card.is-matched .card__face:not(.card__face--back) {
+    background-color: transparent;
+    background-image: url("../../assets/icons/foods_theme/orange_cover.svg");
+    background-size: cover;
+    background-position: center;
   }
 }
 
-// ── Exit overlay (same slide-up animation, foods design) ──────────────────────
-
+// ── Exit overlay ─────────────────────────────────────────────────────────────
 #field[data-theme="foods"] ~ .exit-overlay {
-  .exit-overlay__sheet {
-    background-color: #f6f6f6;
-    border-radius: 20px;
-    width: 456px;
-    gap: 40px;
-  }
+  --exit-overlay-sheet-bg: #f6f6f6;
+  --exit-overlay-sheet-width: 456px;
+  --exit-overlay-sheet-radius: 20px;
+  --exit-overlay-actions-gap: 24px;
 
-  .exit-overlay__title {
-    color: #a45212;
-    font-size: 28px;
-    font-family: $font-second-food;
-  }
+  --exit-overlay-title-font: #{$font-second-food};
+  --exit-overlay-title-size: 28px;
+  --exit-overlay-title-color: #a45212;
 
-  .exit-overlay__actions {
-    gap: 24px;
-
-    #exit-cancel {
-      background-color: #f3832d;
-      border: none;
-      color: #fff;
-    }
-
-    #exit-confirm {
-      background-color: transparent;
-      border: 2px solid #f3832d;
-      color: #f3832d;
-    }
-  }
+  --exit-overlay-cancel-bg: #f3832d;
+  --exit-overlay-cancel-border: none;
+  --exit-overlay-cancel-fg: #fff;
+  --exit-overlay-confirm-bg: transparent;
+  --exit-overlay-confirm-border: 2px solid #f3832d;
+  --exit-overlay-confirm-fg: #f3832d;
 }
 
-// ── Game over ──────────────────────────────────────────────────────────────────
-
+// ── Game over ────────────────────────────────────────────────────────────────
 #game_over[data-theme="foods"] {
-  background-color: #f3832d;
-  gap: 104px;
+  --game-over-bg: #f3832d;
+  --game-over-gap: 104px;
 
-  .game-over__title {
-    font-family: $font-second-food;
-    font-size: 130px;
-    color: #fff;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  }
+  --game-over-title-font: #{$font-second-food};
+  --game-over-title-size: 130px;
+  --game-over-title-color: #fff;
+  --game-over-title-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  --game-over-title-margin-bottom: 0;
 
-  .game-over__label {
-    font-family: $font-second-food;
-    font-size: 42px;
-    color: #fff;
-  }
+  --game-over-label-font: #{$font-second-food};
+  --game-over-label-size: 42px;
+  --game-over-label-color: #fff;
 
-  .game-over__scores {
-    background-color: #fff;
-    gap: 40px;
-    padding: 8px 24px;
-  }
+  --game-over-scores-bg: #fff;
+  --game-over-scores-gap: 40px;
+  --game-over-scores-padding: 8px 24px;
 
-  .game-over__score {
-    font-family: $font-main-food;
-    font-weight: 700;
-    font-size: 30px;
-
-    img { height: 30px; }
-
-    &.orange { color: #ea6900; }
-    &.blue   { color: #097fc5; }
-  }
+  --game-over-score-font: #{$font-main-food};
+  --game-over-score-size: 30px;
+  --game-over-score-img-height: 30px;
+  --game-over-score-blue: #097fc5;
+  --game-over-score-orange: #ea6900;
 }
 
-// ── Result (winner / draw) ─────────────────────────────────────────────────────
-
+// ── Result ───────────────────────────────────────────────────────────────────
 #result[data-theme="foods"] {
   --result-bg: #f6f6f6;
+  --result-confetti-display: none;
 
   --result-subtitle-font: #{$font-main-food};
   --result-subtitle-size: 40px;

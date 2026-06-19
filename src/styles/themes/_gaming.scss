@@ -2,61 +2,51 @@
 
 // ═══════════════════════════════════════════════════════════════════════════════
 //  GAMING THEME
-//  Activated via [data-theme="gaming"] on #field and .card-grid.
-//  Fully isolated — never affects the default themes.
+//  Activated via [data-theme="gaming"] on #field, .card-grid, #game_over and
+//  #result. Values live in CSS tokens; only true structural changes (card sizes,
+//  image fit, larger label icons) stay as rules.
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ── Field ──────────────────────────────────────────────────────────────────────
-
+// ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="gaming"] {
-  background-color: #1E3D52;
+  --field-bg: #1E3D52;
+  --field-gap: 32px;
+  --field-text-color: #fff;
+  --field-header-font: #{$font-gaming};
 
-  header {
-    span,
-    .current-player span {
-      font-family: $font-gaming;
-    }
+  --field-labels-bg: rgba(255, 255, 255, 0.08);
+  --field-labels-border: 1px solid rgba(255, 255, 255, 0.12);
+  --field-label-blue: #2bb1ff;
+  --field-label-orange: #f58e39;
 
-    .labels {
-      background-color: rgba(#fff, 0.08);
-      border: 1px solid rgba(#fff, 0.12);
+  --field-exit-bg: rgba(232, 48, 96, 0.1);
+  --field-exit-border: 3px solid #E83060;
+  --field-exit-hover-bg: rgba(232, 48, 96, 0.2);
+  --field-exit-hover-shadow: 4px 4px 6px 0 rgba(232, 48, 96, 0.25);
 
-      .label img {
-        height: 32px;
-        width: auto;
-      }
-    }
-
-    .current-player img {
-      height: 28px;
-      width: auto;
-    }
-
-    .exit {
-      background-color: rgba(#E83060, 0.1);
-      border-color: #E83060;
-
-      span { font-family: $font-gaming; }
-
-      &:hover {
-        background-color: rgba(#E83060, 0.2);
-        box-shadow: 4px 4px 6px 0 rgba(#E83060, 0.25);
-      }
-    }
+  // structural: gaming uses larger label icons
+  header .labels .label img {
+    height: 32px;
+    width: auto;
   }
 }
 
-// ── Cards ──────────────────────────────────────────────────────────────────────
-
+// ── Cards ────────────────────────────────────────────────────────────────────
 .card-grid[data-theme="gaming"] {
+  --card-face-bg: #fff;
+  --card-face-back-bg: transparent;
+  --card-face-radius: 12px;
+  --card-matched-border: none;
+  --card-matched-shadow: none;
+  --card-matched-radius: 0;
+
+  // structural: fixed size + image fit + framed matched look
   .card {
     width: 105px;
     height: 120px;
     aspect-ratio: unset;
 
     &__face {
-      background-color: #fff;
-      border-radius: 12px;
       overflow: hidden;
       box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.25);
 
@@ -68,61 +58,70 @@
         object-fit: contain;
       }
 
-      &--back {
-        background-color: transparent;
-
-        img {
-          width: 100%;
-          height: 100%;
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: cover;
-        }
+      &--back img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
       }
     }
 
-    &.is-matched {
-      border: none;
-      box-shadow: none;
-      border-radius: 0;
-
-      .card__face {
-        box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px #4DD5BC;
-      }
+    &.is-matched .card__face {
+      box-shadow: 6px 6px 12px 0 rgba(0, 0, 0, 0.25), 0 0 0 3px #4DD5BC;
     }
   }
 }
 
-// ── Exit overlay (same slide-up animation, gaming design) ─────────────────────
-
+// ── Exit overlay ─────────────────────────────────────────────────────────────
 #field[data-theme="gaming"] ~ .exit-overlay {
-  .exit-overlay__sheet {
-    background-color: #ffffff;
-  }
+  --exit-overlay-sheet-bg: #ffffff;
+  --exit-overlay-sheet-width: 540px;
+  --exit-overlay-sheet-radius: 0;
+  --exit-overlay-actions-gap: 20px;
 
-  .exit-overlay__title {
-    color: #1a1a1a;
-    font-family: $font-gaming;
-    font-size: 28px;
-  }
+  --exit-overlay-title-font: #{$font-gaming};
+  --exit-overlay-title-size: 28px;
+  --exit-overlay-title-color: #1a1a1a;
 
-  .exit-overlay__actions {
-    #exit-cancel {
-      background-color: transparent;
-      border: 2px solid #E83060;
-      color: #E83060;
-    }
-
-    #exit-confirm {
-      background-color: #E83060;
-      border: 2px solid #E83060;
-      color: #fff;
-    }
-  }
+  --exit-overlay-cancel-bg: transparent;
+  --exit-overlay-cancel-border: 2px solid #E83060;
+  --exit-overlay-cancel-fg: #E83060;
+  --exit-overlay-confirm-bg: #E83060;
+  --exit-overlay-confirm-border: 2px solid #E83060;
+  --exit-overlay-confirm-fg: #fff;
 }
 
+// ── Game over (no dedicated design yet → neutral default; redesign here) ───────
+#game_over[data-theme="gaming"] {
+  --game-over-bg: #303131;
+  --game-over-gap: 40px;
+
+  --game-over-title-font: #{$font-main};
+  --game-over-title-size: clamp(80px, 12vw, 160px);
+  --game-over-title-color: #fff;
+  --game-over-title-shadow: none;
+  --game-over-title-margin-bottom: 0;
+
+  --game-over-label-font: #{$font-body};
+  --game-over-label-size: 20px;
+  --game-over-label-color: rgba(255, 255, 255, 0.7);
+
+  --game-over-scores-bg: #444;
+  --game-over-scores-gap: 32px;
+  --game-over-scores-padding: 16px 28px;
+
+  --game-over-score-font: #{$font-main};
+  --game-over-score-size: 28px;
+  --game-over-score-img-height: 24px;
+  --game-over-score-blue: #2bb1ff;
+  --game-over-score-orange: #f58e39;
+}
+
+// ── Result ───────────────────────────────────────────────────────────────────
 #result[data-theme="gaming"] {
   --result-bg: #294F60;
+  --result-confetti-display: none;
 
   --result-subtitle-font: #{$font-gaming};
   --result-subtitle-size: 28px;

@@ -1,5 +1,10 @@
 @use "../base/variables" as *;
 
+// ─────────────────────────────────────────────────────────────────────────────
+//  GAME OVER — skeleton only. Every themeable value is a CSS token defined per
+//  theme under #game_over[data-theme="…"] (see themes/_*.scss).
+// ─────────────────────────────────────────────────────────────────────────────
+
 @keyframes slideOutUp {
   from { transform: translateY(0); opacity: 1; }
   to   { transform: translateY(-100vh); opacity: 0; }
@@ -13,47 +18,55 @@
 }
 
 #game_over {
-  background-color: #303131;
+  background-color: var(--game-over-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: var(--game-over-gap);
 
   .game-over__title {
-    font-family: $font-main;
-    font-size: clamp(80px, 12vw, 160px);
+    font-family: var(--game-over-title-font);
+    font-size: var(--game-over-title-size);
     font-weight: 700;
-    color: #fff;
-    margin: 0;
+    color: var(--game-over-title-color);
+    text-shadow: var(--game-over-title-shadow);
+    margin: 0 0 var(--game-over-title-margin-bottom) 0;
     line-height: 1;
   }
 
+  .final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
   .game-over__label {
-    font-family: $font-body;
-    font-size: 20px;
-    color: rgba(#fff, 0.7);
+    font-family: var(--game-over-label-font);
+    font-size: var(--game-over-label-size);
+    color: var(--game-over-label-color);
     margin: 0;
   }
 
   .game-over__scores {
     display: flex;
-    background-color: #444;
-    padding: 16px 28px;
-    gap: 32px;
+    background-color: var(--game-over-scores-bg);
+    padding: var(--game-over-scores-padding);
+    gap: var(--game-over-scores-gap);
   }
 
   .game-over__score {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: $font-main;
-    font-size: 28px;
+    font-family: var(--game-over-score-font);
+    font-size: var(--game-over-score-size);
     font-weight: 700;
 
-    img { height: 24px; }
+    img { height: var(--game-over-score-img-height); }
 
-    &.blue   { color: #2bb1ff; }
-    &.orange { color: #f58e39; }
+    &.blue   { color: var(--game-over-score-blue); }
+    &.orange { color: var(--game-over-score-orange); }
   }
 }

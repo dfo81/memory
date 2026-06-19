@@ -1,3 +1,10 @@
+// ─────────────────────────────────────────────────────────────────────────────
+//  CARDS — skeleton only. Themeable surfaces (face/back colours, radius, matched
+//  frame) are CSS tokens defined per theme under .card-grid[data-theme="…"].
+//  Per-theme structural changes (card size, image fit, special matched looks)
+//  stay in the theme files next to the token block.
+// ─────────────────────────────────────────────────────────────────────────────
+
 .card-grid {
   display: grid;
   gap: 10px;
@@ -25,11 +32,11 @@
     position: absolute;
     inset: 0;
     backface-visibility: hidden;
-    background-color: #eaeaea;
+    background-color: var(--card-face-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: var(--card-face-radius);
 
     img {
       width: 120px;
@@ -39,7 +46,7 @@
 
     &--back {
       transform: rotateY(180deg);
-      background-color: #1e2020;
+      background-color: var(--card-face-back-bg);
 
       img {
         width: 100%;
@@ -55,9 +62,9 @@
   }
 
   &.is-matched {
-    box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.30);
+    box-shadow: var(--card-matched-shadow);
     pointer-events: none;
-    border: 5px solid #888;
-    border-radius: 5px;
+    border: var(--card-matched-border);
+    border-radius: var(--card-matched-radius);
   }
 }

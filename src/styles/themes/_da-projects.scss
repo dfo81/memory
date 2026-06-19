@@ -1,65 +1,97 @@
 @use "../base/variables" as *;
 
 // ═══════════════════════════════════════════════════════════════════════════════
-//  DA PROJECTS THEME  ·  SCAFFOLD — fill in the design here
+//  DA PROJECTS THEME  ·  SCAFFOLD — design by editing the CSS tokens below.
 //
 //  Activated via [data-theme="da-projects"] on #field, .card-grid, #game_over
-//  and #result (set in main.ts → startGame / showWinner).
-//  Keep every rule scoped under these selectors so the default themes stay
-//  untouched. See _gaming.scss / _foods.scss for worked examples.
+//  and #result. Tokens are pre-seeded with the neutral default look so the
+//  screens render today; override any token to style. Add structural rules only
+//  when a value token isn't enough (see _foods.scss / _gaming.scss).
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ── Field (header: .labels, .current-player, .exit) ─────────────────────────────
-
+// ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="da-projects"] {
-  background-color: #1E7594;
+  --field-bg: #1E7594;
+  --field-gap: 32px;
+  --field-text-color: #fff;
+  --field-header-font: #{$font-da-projects};
 
-  header {
-    // .labels { }
-    // .current-player img { }
-    // .exit { }
-  }
+  --field-labels-bg: rgba(255, 255, 255, 0.08);
+  --field-labels-border: none;
+  --field-label-blue: #2bb1ff;
+  --field-label-orange: #f58e39;
+
+  --field-exit-bg: rgba(255, 255, 255, 0.08);
+  --field-exit-border: 3px solid rgba(255, 255, 255, 0.2);
+  --field-exit-hover-bg: rgba(255, 255, 255, 0.12);
+  --field-exit-hover-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
 }
 
-// ── Cards (.card, .card__face, .card__face--back, .is-matched) ───────────────────
-
+// ── Cards ────────────────────────────────────────────────────────────────────
 .card-grid[data-theme="da-projects"] {
-  // .card { }
-  // .card__face { }
-  // .card__face--back { }
-  // .card.is-matched { }
+  --card-face-bg: #eaeaea;
+  --card-face-back-bg: #1e2020;
+  --card-face-radius: 4px;
+  --card-matched-border: 5px solid #888;
+  --card-matched-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.30);
+  --card-matched-radius: 5px;
 }
 
-// ── Exit overlay (slide-up sheet) ───────────────────────────────────────────────
-
+// ── Exit overlay ─────────────────────────────────────────────────────────────
 #field[data-theme="da-projects"] ~ .exit-overlay {
-  // .exit-overlay__sheet { }
-  // .exit-overlay__title { }
-  // #exit-cancel { }
-  // #exit-confirm { }
-  
+  --exit-overlay-sheet-bg: #f5f5f5;
+  --exit-overlay-sheet-width: 540px;
+  --exit-overlay-sheet-radius: 0;
+  --exit-overlay-actions-gap: 20px;
+
+  --exit-overlay-title-font: #{$font-da-projects};
+  --exit-overlay-title-size: 40px;
+  --exit-overlay-title-color: #1a1a1a;
+
+  --exit-overlay-cancel-bg: #666;
+  --exit-overlay-cancel-border: none;
+  --exit-overlay-cancel-fg: #fff;
+  --exit-overlay-confirm-bg: transparent;
+  --exit-overlay-confirm-border: 2px solid #666;
+  --exit-overlay-confirm-fg: #666;
 }
 
-// ── Game over (#game_over → .game-over__title / __label / __scores / __score) ────
-
+// ── Game over ────────────────────────────────────────────────────────────────
 #game_over[data-theme="da-projects"] {
-  // background-color: ;
-  // .game-over__title { }
-  // .game-over__label { }
-  // .game-over__scores { }
-  // .game-over__score { &.blue {} &.orange {} }
+  --game-over-bg: #1E7594;
+  --game-over-gap: 40px;
+
+  --game-over-title-font: #{$font-da-projects};
+  --game-over-title-size: clamp(80px, 12vw, 160px);
+  --game-over-title-color: #fff;
+  --game-over-title-shadow: none;
+  --game-over-title-margin-bottom: 0;
+
+  --game-over-label-font: #{$font-da-projects};
+  --game-over-label-size: 20px;
+  --game-over-label-color: rgba(255, 255, 255, 0.7);
+
+  --game-over-scores-bg: #444;
+  --game-over-scores-gap: 32px;
+  --game-over-scores-padding: 16px 28px;
+
+  --game-over-score-font: #{$font-da-projects};
+  --game-over-score-size: 28px;
+  --game-over-score-img-height: 24px;
+  --game-over-score-blue: #2bb1ff;
+  --game-over-score-orange: #f58e39;
 }
 
-// ── Result (winner / draw → .result__subtitle / __title / __icon / __btn) ────────
-
+// ── Result ───────────────────────────────────────────────────────────────────
 #result[data-theme="da-projects"] {
   --result-bg: #1E7594;
+  --result-confetti-display: none;
 
   --result-subtitle-font: #{$font-da-projects};
   --result-subtitle-size: 40px;
   --result-subtitle-weight: 400;
   --result-subtitle-color: #fff;
-  
+
   --result-title-font: #{$font-da-projects};
   --result-title-size: 80px;
   --result-title-blue: #fff;
@@ -68,7 +100,7 @@
   --result-title-draw-color: #FD5B4F;
   --result-title-draw-shadow: 0 4px 4px #00000040;
   --result-title-draw-size: 128px;
-  // .result__icon { }
+
   --result-btn-font: #{$font-da-projects};
   --result-btn-size: 20px;
   --result-btn-bg: #BFE5F2;
@@ -80,6 +112,6 @@
 
   --result-btn-hover-bg: #FD5B4F;
   --result-btn-hover-fg: #BFE5F2;
-  --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);;
+  --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   --result-btn-hover-border: 2px solid #BFE5F2;
 }

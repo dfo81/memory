@@ -33,8 +33,10 @@
     pointer-events: none;
     display: none;
 
+    // JS toggles .is-visible on a win; the theme decides if confetti actually
+    // shows via --result-confetti-display (block / none). Default: hidden.
     &.is-visible {
-      display: block;
+      display: var(--result-confetti-display, none);
     }
   }
 
