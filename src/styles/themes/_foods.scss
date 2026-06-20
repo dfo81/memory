@@ -156,13 +156,14 @@
   --game-over-bg: #f3832d;
   --game-over-gap: 104px;
 
-  --game-over-title-font: #{$font-second-food};
+  --game-over-title-font: #{$font-main-food};
   --game-over-title-size: 130px;
+  --game-over-title-weight: 400;
   --game-over-title-color: #fff;
-  --game-over-title-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  --game-over-title-shadow: 0 4px 4px #00000040;
   --game-over-title-margin-bottom: 0;
 
-  --game-over-label-font: #{$font-second-food};
+  --game-over-label-font: #{$font-main-food};
   --game-over-label-size: 42px;
   --game-over-label-color: #fff;
 
@@ -170,8 +171,8 @@
   --game-over-scores-gap: 40px;
   --game-over-scores-padding: 8px 24px;
 
-  --game-over-score-font: #{$font-main-food};
-  --game-over-score-size: 30px;
+  --game-over-score-font: #{$font-second-food};
+  --game-over-score-size: 40px;
   --game-over-score-img-height: 30px;
   --game-over-score-blue: #097fc5;
   --game-over-score-orange: #ea6900;

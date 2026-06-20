@@ -11,7 +11,7 @@
 
 // ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="da-projects"] {
-  --field-bg: #1E7594;
+  --field-bg: #1e7594;
   --field-gap: 32px;
   --field-text-color: #fff;
   --field-header-font: #{$font-da-projects};
@@ -33,7 +33,7 @@
   --card-face-back-bg: #1e2020;
   --card-face-radius: 4px;
   --card-matched-border: 5px solid #888;
-  --card-matched-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.30);
+  --card-matched-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.3);
   --card-matched-radius: 5px;
 }
 
@@ -58,33 +58,34 @@
 
 // ── Game over ────────────────────────────────────────────────────────────────
 #game_over[data-theme="da-projects"] {
-  --game-over-bg: #1E7594;
-  --game-over-gap: 40px;
+  --game-over-bg: #1e7594;
+  --game-over-gap: 104px;
 
   --game-over-title-font: #{$font-da-projects};
-  --game-over-title-size: clamp(80px, 12vw, 160px);
-  --game-over-title-color: #fff;
-  --game-over-title-shadow: none;
+  --game-over-title-size: 130px;
+  --game-over-title-weight: 800;
+  --game-over-title-color: #fd5b4f;
+  --game-over-title-shadow: 0 4px 4px #00000040;
   --game-over-title-margin-bottom: 0;
 
   --game-over-label-font: #{$font-da-projects};
-  --game-over-label-size: 20px;
-  --game-over-label-color: rgba(255, 255, 255, 0.7);
+  --game-over-label-size: 40px;
+  --game-over-label-color: #fff;
 
-  --game-over-scores-bg: #444;
+  --game-over-scores-bg: #fff;
   --game-over-scores-gap: 32px;
   --game-over-scores-padding: 16px 28px;
-
+  --game-over-border-radius: 10px;
   --game-over-score-font: #{$font-da-projects};
-  --game-over-score-size: 28px;
-  --game-over-score-img-height: 24px;
+  --game-over-score-size: 38px;
+  --game-over-score-img-height: 30px;
   --game-over-score-blue: #2bb1ff;
   --game-over-score-orange: #f58e39;
 }
 
 // ── Result ───────────────────────────────────────────────────────────────────
 #result[data-theme="da-projects"] {
-  --result-bg: #1E7594;
+  --result-bg: #1e7594;
   --result-confetti-display: none;
 
   --result-subtitle-font: #{$font-da-projects};
@@ -97,21 +98,21 @@
   --result-title-blue: #fff;
   --result-title-orange: #fff;
   --result-title-draw-font: #{$font-da-projects};
-  --result-title-draw-color: #FD5B4F;
+  --result-title-draw-color: #fd5b4f;
   --result-title-draw-shadow: 0 4px 4px #00000040;
   --result-title-draw-size: 128px;
 
   --result-btn-font: #{$font-da-projects};
   --result-btn-size: 20px;
-  --result-btn-bg: #BFE5F2;
-  --result-btn-fg: #1E7594;
-  --result-btn-border: 2px solid #BFE5F2;
+  --result-btn-bg: #bfe5f2;
+  --result-btn-fg: #1e7594;
+  --result-btn-border: 2px solid #bfe5f2;
   --result-btn-padding: 12px 20px;
   --result-btn-radius: 10px;
   --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 
-  --result-btn-hover-bg: #FD5B4F;
-  --result-btn-hover-fg: #BFE5F2;
+  --result-btn-hover-bg: #fd5b4f;
+  --result-btn-hover-fg: #bfe5f2;
   --result-btn-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-  --result-btn-hover-border: 2px solid #BFE5F2;
+  --result-btn-hover-border: 2px solid #bfe5f2;
 }

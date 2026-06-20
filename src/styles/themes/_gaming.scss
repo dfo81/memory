@@ -94,17 +94,19 @@
 
 // ── Game over (no dedicated design yet → neutral default; redesign here) ───────
 #game_over[data-theme="gaming"] {
-  --game-over-bg: #303131;
-  --game-over-gap: 40px;
+  --game-over-bg: #294F60;
+  --game-over-gap: 104px;
 
-  --game-over-title-font: #{$font-main};
+  --game-over-title-font: #{$font-gaming};
   --game-over-title-size: clamp(80px, 12vw, 160px);
-  --game-over-title-color: #fff;
+  --game-over-title-color: #ED1B76;
+  --game-over-title-weight: 800;
   --game-over-title-shadow: none;
   --game-over-title-margin-bottom: 0;
 
-  --game-over-label-font: #{$font-body};
-  --game-over-label-size: 20px;
+  --game-over-label-font: #{$font-gaming};
+  --game-over-label-size: 28px;
+  --game-over-label-weight: 700;
   --game-over-label-color: rgba(255, 255, 255, 0.7);
 
   --game-over-scores-bg: #444;

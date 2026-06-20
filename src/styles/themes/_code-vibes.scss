@@ -60,18 +60,13 @@
 
   --game-over-title-font: #{$font-main};
   --game-over-title-size: clamp(80px, 12vw, 160px);
+  --game-over-title-weight: 700;
   --game-over-title-color: #86E9D6;
-  --game-over-title-shadow:
-    2px  2px 0 #3DB8A4,
-    4px  4px 0 #2E9080,
-    6px  6px 0 #1F6A5E,
-    8px  8px 0 #12443C,
-    10px 10px 0 #0A2C28;
-  // 124px Abstand zwischen Überschrift und Rest (40px gap + 84px margin)
+  --game-over-title-shadow: -3px -3px 5px #4DD5BC80;
   --game-over-title-margin-bottom: 84px;
 
-  --game-over-label-font: #{$font-body};
-  --game-over-label-size: 20px;
+  --game-over-label-font: #{$font-main};
+  --game-over-label-size: 26px;
   --game-over-label-color: rgba(255, 255, 255, 0.7);
 
   --game-over-scores-bg: #3A4E4C;

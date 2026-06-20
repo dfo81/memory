@@ -28,7 +28,7 @@
   .game-over__title {
     font-family: var(--game-over-title-font);
     font-size: var(--game-over-title-size);
-    font-weight: 700;
+    font-weight: var(--game-over-title-weight);
     color: var(--game-over-title-color);
     text-shadow: var(--game-over-title-shadow);
     margin: 0 0 var(--game-over-title-margin-bottom) 0;
@@ -46,6 +46,7 @@
     font-family: var(--game-over-label-font);
     font-size: var(--game-over-label-size);
     color: var(--game-over-label-color);
+    font-weight: var(--game-over-label-weight);
     margin: 0;
   }
 
@@ -54,6 +55,7 @@
     background-color: var(--game-over-scores-bg);
     padding: var(--game-over-scores-padding);
     gap: var(--game-over-scores-gap);
+    border-radius: var(--game-over-border-radius);
   }
 
   .game-over__score {
