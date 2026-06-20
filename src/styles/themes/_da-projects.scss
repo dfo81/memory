@@ -39,21 +39,25 @@
 
 // ── Exit overlay ─────────────────────────────────────────────────────────────
 #field[data-theme="da-projects"] ~ .exit-overlay {
-  --exit-overlay-sheet-bg: #f5f5f5;
+  --exit-overlay-sheet-bg: #F0F6F9;
   --exit-overlay-sheet-width: 540px;
-  --exit-overlay-sheet-radius: 0;
+  --exit-overlay-sheet-radius: 20px;
   --exit-overlay-actions-gap: 20px;
+  --exit-overlay-sheet-padding: 40px 20px;
 
   --exit-overlay-title-font: #{$font-da-projects};
   --exit-overlay-title-size: 40px;
-  --exit-overlay-title-color: #1a1a1a;
+  --exit-overlay-title-color: #294F60;
 
-  --exit-overlay-cancel-bg: #666;
+  --exit-overlay-cancel-bg: #BFE5F2;
   --exit-overlay-cancel-border: none;
-  --exit-overlay-cancel-fg: #fff;
-  --exit-overlay-confirm-bg: transparent;
-  --exit-overlay-confirm-border: 2px solid #666;
-  --exit-overlay-confirm-fg: #666;
+  --exit-overlay-button-radius: 10px;
+  --exit-overlay-button-shadow: 3px 3px 5px #2F2E2E33;
+  --exit-overlay-cancel-fg: #1E7594;
+  --exit-overlay-confirm-bg: #FD8A81;
+  --exit-overlay-confirm-border: none;
+  --exit-overlay-confirm-fg: #fff;
+  --exit-overlay-sheet-radius: 10px;
 }
 
 // ── Game over ────────────────────────────────────────────────────────────────

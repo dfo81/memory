@@ -25,7 +25,7 @@
   &__sheet {
     position: relative;
     width: var(--exit-overlay-sheet-width);
-    height: 270px;
+    padding: var(--exit-overlay-sheet-padding);
     background-color: var(--exit-overlay-sheet-bg);
     border-radius: var(--exit-overlay-sheet-radius);
     display: flex;
@@ -68,6 +68,11 @@
       transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
 
       &:hover { transform: scale(1.04); opacity: 0.9; }
+    }
+
+    #exit-cancel, #exit-confirm {
+      border-radius: var(--exit-overlay-button-radius);
+      box-shadow: var(--exit-overlay-button-shadow);
     }
 
     #exit-cancel {

@@ -77,8 +77,9 @@
 #field[data-theme="gaming"] ~ .exit-overlay {
   --exit-overlay-sheet-bg: #ffffff;
   --exit-overlay-sheet-width: 540px;
-  --exit-overlay-sheet-radius: 0;
+  --exit-overlay-sheet-radius: 20px;
   --exit-overlay-actions-gap: 20px;
+  --exit-overlay-sheet-padding: 40px 0;
 
   --exit-overlay-title-font: #{$font-gaming};
   --exit-overlay-title-size: 28px;
@@ -86,6 +87,7 @@
 
   --exit-overlay-cancel-bg: transparent;
   --exit-overlay-cancel-border: 2px solid #E83060;
+  --exit-overlay-button-radius: 10px;
   --exit-overlay-cancel-fg: #E83060;
   --exit-overlay-confirm-bg: #E83060;
   --exit-overlay-confirm-border: 2px solid #E83060;
@@ -109,13 +111,14 @@
   --game-over-label-weight: 700;
   --game-over-label-color: rgba(255, 255, 255, 0.7);
 
-  --game-over-scores-bg: #444;
+  --game-over-scores-bg: #fff;
+  --game-over-border-radius: 10px;
   --game-over-scores-gap: 32px;
   --game-over-scores-padding: 16px 28px;
 
   --game-over-score-font: #{$font-main};
-  --game-over-score-size: 28px;
-  --game-over-score-img-height: 24px;
+  --game-over-score-size: 38px;
+  --game-over-score-img-height: 30px;
   --game-over-score-blue: #2bb1ff;
   --game-over-score-orange: #f58e39;
 }
@@ -146,7 +149,7 @@
   --result-btn-bg: #ED1B7614;
   --result-btn-fg: #fff;
   --result-btn-border: 2px solid #E71C4F;
-  --result-btn-padding: 12px 20px;
+  --result-btn-padding: 8px 20px;
   --result-btn-radius: 10px;
   --result-btn-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 
