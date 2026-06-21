@@ -214,7 +214,7 @@ type ResultTheme = {
 
 const DEFAULT_RESULT: ResultTheme = {
     backLabel: 'Home',
-    drawIcon: `${base}src/assets/icons/general/scale_code-vibes.svg`,
+    drawIcon: `${base}src/assets/icons/code_vibes_theme/scale.svg`,
     winnerIcon: (w) => `${base}src/assets/icons/general/Player_${w}.svg`,
 }
 
@@ -222,12 +222,16 @@ const RESULT_THEMES: Record<string, Partial<ResultTheme>> = {
     'code-vibes': {
         backLabel: 'Back to start',
     },
+    gaming: {
+        drawIcon: `${base}src/assets/icons/gaming_theme/scale.svg`,
+        winnerIcon: () => `${base}src/assets/icons/gaming_theme/pockal.svg`,
+    },
     foods: {
-        drawIcon: `${base}src/assets/icons/general/scale_foods.svg`,
+        drawIcon: `${base}src/assets/icons/foods_theme/scale.svg`,
         winnerIcon: (w) => `${base}src/assets/icons/foods_theme/Frame_${w}.svg`,
     },
     'da-projects': {
-        drawIcon: `${base}src/assets/icons/general/scale_da-projects.svg`,
+        drawIcon: `${base}src/assets/icons/da_projects_theme/scale.svg`,
     },
 }
 

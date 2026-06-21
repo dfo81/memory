@@ -11,30 +11,47 @@
 
 // ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="da-projects"] {
-  --field-bg: #1e7594;
+  --field-bg: #fff;
   --field-gap: 32px;
-  --field-text-color: #fff;
+  --field-text-color: #294f60;
   --field-header-font: #{$font-da-projects};
 
-  --field-labels-bg: rgba(255, 255, 255, 0.08);
-  --field-labels-border: none;
+  --field-labels-bg: #eef5f8;
+  --field-labels-border: 1px solid rgba(41, 79, 96, 0.12);
   --field-label-blue: #2bb1ff;
   --field-label-orange: #f58e39;
 
-  --field-exit-bg: rgba(255, 255, 255, 0.08);
-  --field-exit-border: 3px solid rgba(255, 255, 255, 0.2);
-  --field-exit-hover-bg: rgba(255, 255, 255, 0.12);
-  --field-exit-hover-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
+  --field-exit-bg: #eef5f8;
+  --field-exit-border: 1px solid rgba(41, 79, 96, 0.15);
+  --field-exit-hover-bg: #e1eef3;
+  --field-exit-hover-shadow: 4px 4px 6px 0 rgba(41, 79, 96, 0.15);
+
+  // structural: full-width light header bar on the white field
+  header {
+    background-color: #f1f7fa;
+    border-radius: 12px;
+    padding: 16px 24px;
+    align-items: center;
+
+    // exit_icon.svg is a fixed light fill (no currentColor) → darken it so it
+    // stays visible on the light exit button.
+    .exit img { filter: brightness(0) saturate(100%) opacity(0.75); }
+  }
 }
 
 // ── Cards ────────────────────────────────────────────────────────────────────
 .card-grid[data-theme="da-projects"] {
   --card-face-bg: #eaeaea;
-  --card-face-back-bg: #1e2020;
+  --card-face-back-bg: #1e7594;
   --card-face-radius: 4px;
   --card-matched-border: 5px solid #888;
   --card-matched-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.3);
   --card-matched-radius: 5px;
+
+  // No dedicated DA back art yet → hide the placeholder (code-vibes) logo so the
+  // face-down cards read as solid blue, matching the design. Drop this once a
+  // da_projects_theme/back.svg exists.
+  .card__face--back img { display: none; }
 }
 
 // ── Exit overlay ─────────────────────────────────────────────────────────────
@@ -66,7 +83,7 @@
   --game-over-gap: 104px;
 
   --game-over-title-font: #{$font-da-projects};
-  --game-over-title-size: 130px;
+  --game-over-title-size: clamp(80px, 12vw, 160px);
   --game-over-title-weight: 800;
   --game-over-title-color: #fd5b4f;
   --game-over-title-shadow: 0 4px 4px #00000040;

@@ -10,9 +10,9 @@
 // ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="foods"] {
   --field-bg: #fff;
-  --field-gap: 54px;
-  --field-text-color: #fff;
-  --field-header-font: #{$font-main};
+  --field-gap: 32px;
+  --field-text-color: #a45212;
+  --field-header-font: #{$font-main-food};
 
   --field-labels-bg: #fff;
   --field-labels-border: none;
@@ -48,7 +48,7 @@
       gap: 18px;
 
       span {
-        font-family: $font-second-food;
+        font-family: $font-main-food;
         font-size: 32px;
         color: #a45212;
       }
@@ -147,6 +147,7 @@
   --exit-overlay-cancel-bg: #f3832d;
   --exit-overlay-cancel-border: none;
   --exit-overlay-cancel-fg: #fff;
+  --exit-overlay-button-radius: 10px;
   --exit-overlay-confirm-bg: transparent;
   --exit-overlay-confirm-border: 2px solid #f3832d;
   --exit-overlay-confirm-fg: #f3832d;
@@ -158,7 +159,7 @@
   --game-over-gap: 104px;
 
   --game-over-title-font: #{$font-main-food};
-  --game-over-title-size: 130px;
+  --game-over-title-size: clamp(80px, 12vw, 160px);
   --game-over-title-weight: 400;
   --game-over-title-color: #fff;
   --game-over-title-shadow: 0 4px 4px #00000040;
@@ -186,6 +187,7 @@
 
   --result-subtitle-font: #{$font-main-food};
   --result-subtitle-size: 40px;
+  --result-subtitle-weight: 400;
   --result-subtitle-color: #F3832D;
 
   --result-title-font: #{$font-second-food};
@@ -200,6 +202,7 @@
   --result-icon-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
   --result-btn-font: #{$font-second-food};
+  --result-btn-size: 20px;
   --result-btn-bg: #f3832d;
   --result-btn-fg: #fff;
   --result-btn-border: 2px solid #f3832d;

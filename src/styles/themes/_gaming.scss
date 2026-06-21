@@ -9,7 +9,7 @@
 
 // ── Field ────────────────────────────────────────────────────────────────────
 #field[data-theme="gaming"] {
-  --field-bg: #1E3D52;
+  --field-bg: #294F60;
   --field-gap: 32px;
   --field-text-color: #fff;
   --field-header-font: #{$font-gaming};
@@ -24,10 +24,17 @@
   --field-exit-hover-bg: rgba(232, 48, 96, 0.2);
   --field-exit-hover-shadow: 4px 4px 6px 0 rgba(232, 48, 96, 0.25);
 
-  // structural: gaming uses larger label icons
-  header .labels .label img {
-    height: 32px;
-    width: auto;
+  // structural: full-width translucent header bar + larger label icons
+  header {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 16px 24px;
+    align-items: center;
+
+    .labels .label img {
+      height: 32px;
+      width: auto;
+    }
   }
 }
 
@@ -130,12 +137,13 @@
 
   --result-subtitle-font: #{$font-gaming};
   --result-subtitle-size: 28px;
+  --result-subtitle-weight: 400;
   --result-subtitle-color: #fff;
 
   --result-title-font: #{$font-gaming};
   --result-title-size: 128px;
-  --result-title-blue: #a45212;
-  --result-title-orange: #a45212;
+  --result-title-blue: #2bb1ff;
+  --result-title-orange: #f58e39;
   --result-title-draw-font: #{$font-gaming};
   --result-title-draw-color: #ED1B76;
   --result-title-draw-spacing: 7%;
@@ -145,6 +153,7 @@
   --result-icon-shadow: none;
 
   --result-btn-font: #{$font-gaming};
+  --result-btn-size: 20px;
   --result-btn-font-spacing: 4%;
   --result-btn-bg: #ED1B7614;
   --result-btn-fg: #fff;

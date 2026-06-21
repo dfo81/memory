@@ -82,14 +82,14 @@
     &--draw {
       font-family: var(--result-title-draw-font);
       color: var(--result-title-draw-color);
-      font-size: var(--result-title-draw-size);
+      font-size: var(--result-title-draw-size, 128px);
       text-shadow: var(--result-title-draw-shadow);
       letter-spacing: var(--result-title-draw-spacing);
     }
   }
 
   .result__icon {
-    height: 300px;
+    height: var(--result-icon-size, 300px);
     width: auto;
     box-shadow: var(--result-icon-shadow);
   }
