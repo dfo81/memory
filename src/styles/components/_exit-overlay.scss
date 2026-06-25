@@ -66,8 +66,6 @@
       padding: 16px 36px;
       cursor: pointer;
       transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
-
-      &:hover { transform: scale(1.04); opacity: 0.9; }
     }
 
     #exit-cancel, #exit-confirm {
@@ -79,12 +77,21 @@
       background-color: var(--exit-overlay-cancel-bg);
       border: var(--exit-overlay-cancel-border);
       color: var(--exit-overlay-cancel-fg);
+
+      &:hover {
+        background-color: var(--exit-overlay-cancel-bg-hover);
+        color: var(--exit-overlay-cancel-color-hover);
+      }
     }
 
     #exit-confirm {
       background-color: var(--exit-overlay-confirm-bg);
       border: var(--exit-overlay-confirm-border);
       color: var(--exit-overlay-confirm-fg);
+
+      &:hover {
+        box-shadow: 4px 4px 6px #4DD5BC33;
+      }
     }
   }
 }

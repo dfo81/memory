@@ -47,8 +47,10 @@
   --exit-overlay-title-color: #1a1a1a;
 
   --exit-overlay-cancel-bg: #4DD5BC;
-  --exit-overlay-cancel-border: none;
+  --exit-overlay-cancel-bg-hover: #66CFBCB2; 
+  --exit-overlay-cancel-border: 2px solid #4DD5BC;
   --exit-overlay-cancel-fg: #fff;
+  
   --exit-overlay-confirm-bg: transparent;
   --exit-overlay-confirm-border: 2px solid #4DD5BC;
   --exit-overlay-confirm-fg: #4DD5BC;
