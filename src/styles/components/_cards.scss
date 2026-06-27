@@ -1,19 +1,19 @@
 // ─────────────────────────────────────────────────────────────────────────────
-//  CARDS — skeleton only. Themeable surfaces (face/back colours, radius, matched
-//  frame) are CSS tokens defined per theme under .card-grid[data-theme="…"].
-//  Per-theme structural changes (card size, image fit, special matched looks)
-//  stay in the theme files next to the token block.
+//  CARDS — all design lives here, driven by CSS tokens. The theme files under
+//  themes/ only assign those tokens (card size, image fit, matched look), so no
+//  structural rule is repeated. Each token's fallback is the code-vibes default.
 // ─────────────────────────────────────────────────────────────────────────────
 
 .card-grid {
   display: grid;
-  gap: 10px;
+  gap: 16px;
   width: fit-content;
 }
 
 .card {
-  width: 130px;
-  aspect-ratio: 1 / 1;
+  width: var(--card-width, 130px);
+  height: var(--card-height, auto);
+  aspect-ratio: var(--card-aspect-ratio, 1 / 1);
   background-color: transparent;
   border: none;
   padding: 0;
@@ -37,11 +37,15 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--card-face-radius);
+    overflow: var(--card-face-overflow, visible);
+    box-shadow: var(--card-face-shadow, none);
 
     img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
+      width: var(--card-face-img-width, 120px);
+      height: var(--card-face-img-height, 120px);
+      max-width: var(--card-face-img-max-width, none);
+      max-height: var(--card-face-img-max-height, none);
+      object-fit: var(--card-face-img-fit, contain);
     }
 
     &--back {
@@ -49,9 +53,12 @@
       background-color: var(--card-face-back-bg);
 
       img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        width: var(--card-back-img-width, 100%);
+        height: var(--card-back-img-height, 100%);
+        max-width: none;
+        max-height: none;
+        object-fit: var(--card-back-img-fit, contain);
+        display: var(--card-back-img-display, block);
       }
     }
   }
@@ -66,5 +73,14 @@
     pointer-events: none;
     border: var(--card-matched-border);
     border-radius: var(--card-matched-radius);
+
+    // Themes that frame matched cards (gaming ring, foods cover art) drive these;
+    // others leave them at their no-op defaults.
+    .card__face:not(.card__face--back) {
+      box-shadow: var(--card-matched-face-shadow, var(--card-face-shadow, none));
+      background-image: var(--card-matched-face-bg, none);
+      background-size: cover;
+      background-position: center;
+    }
   }
 }

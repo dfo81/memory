@@ -94,8 +94,8 @@ themeImages['da-projects'] ??= themeImages['code-vibes']
 const themeBackImages: Record<string, string> = {
     'code-vibes':  `${base}src/assets/icons/code_vibes_theme/back.svg`,
     'gaming':      `${base}src/assets/icons/gaming_theme/back.svg`,
-    'da-projects': `${base}src/assets/icons/code_vibes_theme/back.svg`, // TODO: → da_projects_theme/back
-    'foods':       `${base}src/assets/icons/foods_theme/back_logo.svg`,
+    'da-projects': `${base}src/assets/icons/general/back_logo.svg`,
+    'foods':       `${base}src/assets/icons/general/back_logo.svg`,
 }
 
 // ── Game state ────────────────────────────────────────────────────────────────
@@ -134,6 +134,7 @@ function playerIcon(player: Player): string {
 }
 
 const playerColor: Record<Player, string> = { blue: '#097fc5', orange: '#ea6900' }
+const gamingPlayerColor: Record<Player, string> = { blue: '#2bb1ff', orange: '#f58e39' }
 
 function updateCurrentPlayerIcon() {
     const icon = document.getElementById('current-player-icon') as HTMLImageElement | null
@@ -142,6 +143,10 @@ function updateCurrentPlayerIcon() {
         // Neutral pawn figure on a pill tinted in the current player's colour.
         icon.src = `${base}src/assets/icons/foods_theme/chess_pawn.svg`
         icon.style.backgroundColor = playerColor[currentPlayer]
+    } else if (currentTheme === 'gaming' || currentTheme === 'da-projects') {
+        // White player figure on a pill tinted in the current player's colour.
+        icon.src = `${base}src/assets/icons/general/Player_white.svg`
+        icon.style.backgroundColor = gamingPlayerColor[currentPlayer]
     } else {
         icon.src = playerIcon(currentPlayer)
         icon.style.backgroundColor = ''
@@ -298,8 +303,11 @@ function startGame(theme: string, player: Player, size: number) {
 
     const labelBlueImg   = document.querySelector<HTMLImageElement>('.label.blue img')
     const labelOrangeImg = document.querySelector<HTMLImageElement>('.label.orange img')
-    if (labelBlueImg)   labelBlueImg.src   = playerIcon('blue')
-    if (labelOrangeImg) labelOrangeImg.src = playerIcon('orange')
+    // da-projects uses the same blue/orange player figures as the gaming theme.
+    const labelIcon = (p: Player) =>
+        theme === 'da-projects' ? `${base}src/assets/icons/general/Player_${p}.svg` : playerIcon(p)
+    if (labelBlueImg)   labelBlueImg.src   = labelIcon('blue')
+    if (labelOrangeImg) labelOrangeImg.src = labelIcon('orange')
 
     const goBlueImg   = document.querySelector<HTMLImageElement>('.game-over__score.blue img')
     const goOrangeImg = document.querySelector<HTMLImageElement>('.game-over__score.orange img')

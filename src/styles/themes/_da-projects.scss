@@ -16,42 +16,67 @@
   --field-text-color: #294f60;
   --field-header-font: #{$font-da-projects};
 
-  --field-labels-bg: #eef5f8;
+  // Header laid out like the gaming theme on the light field bar.
+  --field-header-bg: #f1f7fa;
+  --field-header-align: center;
+  --field-header-padding: 16px 24px;
+  --field-header-radius: 12px;
+
+  // big icon-only labels with coloured scores (the faint dark border keeps the
+  // white pill visible on the light header)
+  --field-labels-bg: #fff;
   --field-labels-border: 1px solid rgba(41, 79, 96, 0.12);
+  --field-labels-border-radius: 10px;
+  --field-labels-gap: 40px;
   --field-label-blue: #2bb1ff;
   --field-label-orange: #f58e39;
+  --field-label-font-size: 30px;
+  --field-label-img-height: 32px;
+  --field-label-text-display: none;
+  --field-label-gap: 8px;
+  // label icons are the same blue / orange player figures as the gaming theme
+  // (set in JS), no pill behind them
 
-  --field-exit-bg: #eef5f8;
-  --field-exit-border: 1px solid rgba(41, 79, 96, 0.15);
-  --field-exit-hover-bg: #e1eef3;
-  --field-exit-hover-shadow: 4px 4px 6px 0 rgba(41, 79, 96, 0.15);
+  // current player: white figure on a pill tinted per player (colour set in JS)
+  --field-current-player-img-bg: #2bb1ff;
+  --field-current-player-img-padding: 4px 8px;
+  --field-current-player-img-radius: 3px;
+  --field-current-player-font-size: 32px;
+  --field-current-player-spacing: 7%;
+  --field-current-player-color: #1E7594;
 
-  // structural: full-width light header bar on the white field
-  header {
-    background-color: #f1f7fa;
-    border-radius: 12px;
-    padding: 16px 24px;
-    align-items: center;
-
-    // exit_icon.svg is a fixed light fill (no currentColor) → darken it so it
-    // stays visible on the light exit button.
-    .exit img { filter: brightness(0) saturate(100%) opacity(0.75); }
-  }
+  // exit styled exactly like the exit-overlay cancel button (light blue → dark
+  // blue on hover, with text + icon inverting to white)
+  --field-exit-bg: #BFE5F2;
+  --field-exit-fg: #1E7594;
+  --field-exit-border: none;
+  --field-exit-border-radius: 10px;
+  --field-exit-shadow: 3px 3px 5px #2F2E2E33;
+  --field-exit-transition: background 0.3s ease, color 0.3s ease;
+  --field-exit-img-transition: 0.3s ease;
+  --field-exit-hover-bg: #1E7594;
+  --field-exit-hover-fg: #fff;
+  --field-exit-img-filter: brightness(0) saturate(100%) invert(36%) sepia(47%) saturate(758%) hue-rotate(150deg) brightness(95%) contrast(88%);
+  --field-exit-img-hover-filter: none;
 }
 
 // ── Cards ────────────────────────────────────────────────────────────────────
 .card-grid[data-theme="da-projects"] {
   --card-face-bg: #eaeaea;
   --card-face-back-bg: #1e7594;
-  --card-face-radius: 4px;
-  --card-matched-border: 5px solid #888;
+  --card-face-radius: 13px;
+  --card-width: 120px;
+  --card-height: 100px;
+  --card-back-img-width: 50%;
+  --card-back-img-height: 50%;
+  // Border only on matched cards. Clip the face so the oversized front art stays
+  // inside the frame instead of covering the border.
+  --card-face-overflow: hidden;
+  --card-matched-border: 2px solid #1E7594;
   --card-matched-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.3);
-  --card-matched-radius: 5px;
+  --card-matched-radius: 13px;
 
-  // No dedicated DA back art yet → hide the placeholder (code-vibes) logo so the
-  // face-down cards read as solid blue, matching the design. Drop this once a
-  // da_projects_theme/back.svg exists.
-  .card__face--back img { display: none; }
+  // Back shows the shared back_logo.svg over the original blue card-face-back-bg.
 }
 
 // ── Exit overlay ─────────────────────────────────────────────────────────────
@@ -66,12 +91,17 @@
   --exit-overlay-title-size: 40px;
   --exit-overlay-title-color: #294F60;
 
+  --exit-overlay-transition: background 0.3s ease, color 0.3s ease;
+
   --exit-overlay-cancel-bg: #BFE5F2;
+    --exit-overlay-cancel-bg-hover: #1E7594; 
   --exit-overlay-cancel-border: none;
   --exit-overlay-button-radius: 10px;
   --exit-overlay-button-shadow: 3px 3px 5px #2F2E2E33;
   --exit-overlay-cancel-fg: #1E7594;
+  --exit-overlay-cancel-fg-hover: #fff;
   --exit-overlay-confirm-bg: #FD8A81;
+  --exit-overlay-confirm-bg-hover: #ED5B50;
   --exit-overlay-confirm-border: none;
   --exit-overlay-confirm-fg: #fff;
   --exit-overlay-sheet-radius: 10px;

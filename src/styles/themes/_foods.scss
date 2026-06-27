@@ -14,10 +14,29 @@
   --field-text-color: #a45212;
   --field-header-font: #{$font-main-food};
 
+  --field-header-bg: #f0e5d9;
+  --field-header-align: center;
+  --field-header-padding: 24px;
+  --field-header-radius: 10px;
+
   --field-labels-bg: #fff;
   --field-labels-border: none;
+  --field-labels-padding: 8px 16px;
+  --field-labels-gap: 40px;
+  --field-labels-border-radius: 10px;
   --field-label-blue: #097fc5;
   --field-label-orange: #ea6900;
+  // only the figure + number show (no "Blue"/"Orange" text)
+  --field-label-img-height: 25px;
+  --field-label-text-display: none;
+
+  // current player: neutral pawn on a pill tinted per player (colour set in JS)
+  --field-current-player-gap: 18px;
+  --field-current-player-font-size: 32px;
+  --field-current-player-img-height: 32px;
+  --field-current-player-img-bg: #097fc5;
+  --field-current-player-img-padding: 4px 8px;
+  --field-current-player-img-radius: 8px;
 
   // foods exit is fully restyled below; keep tokens neutral
   --field-exit-bg: transparent;
@@ -25,43 +44,10 @@
   --field-exit-hover-bg: transparent;
   --field-exit-hover-shadow: none;
 
+  // Structural exception: the exit is a pure image (default + hover swap),
+  // exactly like the prototype — a two-layer pseudo-element swap that can't
+  // reduce to a value token, so it stays as a rule.
   header {
-    background-color: #f0e5d9;
-    border-radius: 10px;
-    padding: 24px;
-    align-items: center;
-
-    .labels {
-      font-size: 30px;
-      gap: 40px;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-family: $font-main-food;
-      font-weight: 700;
-
-      .label { gap: 4px; }
-      .label img { height: 25px; }
-      .label span:not(.score) { display: none; }  // only figure + number
-    }
-
-    .current-player {
-      gap: 18px;
-
-      span {
-        font-family: $font-main-food;
-        font-size: 32px;
-        color: #a45212;
-      }
-
-      img {
-        height: 32px;
-        background-color: #097fc5;
-        padding: 4px 8px;
-        border-radius: 8px;
-      }
-    }
-
-    // Exit is a pure image (default + hover swap), exactly like the prototype.
     .exit {
       position: relative;
       width: 176px;
@@ -111,25 +97,16 @@
   --card-matched-shadow: none;
   --card-matched-radius: 0;
 
-  .card {
-    width: 122px;
-    height: 122px;
-    aspect-ratio: unset;
-  }
-
-  .card__face--back img {
-    width: 70%;
-    height: 70%;
-    object-fit: contain;
-  }
-
-  // Matched cards get the orange-framed cover behind the food — no border.
-  .card.is-matched .card__face:not(.card__face--back) {
-    background-color: transparent;
-    background-image: url("../../assets/icons/foods_theme/orange_cover.svg");
-    background-size: cover;
-    background-position: center;
-  }
+  // square cards, smaller back art, and an orange-framed cover for matched food
+  --card-width: 122px;
+  --card-height: 122px;
+  --card-aspect-ratio: auto;
+  // slightly smaller food icons so they sit with margin inside the card
+  --card-face-img-width: 90px;
+  --card-face-img-height: 90px;
+  --card-back-img-width: 50%;
+  --card-back-img-height: 50%;
+  --card-matched-face-bg: url("../../assets/icons/foods_theme/orange_cover.svg");
 }
 
 // ── Exit overlay ─────────────────────────────────────────────────────────────

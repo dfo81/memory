@@ -1,10 +1,10 @@
 @use "../base/variables" as *;
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  FIELD — skeleton only. Colours / fonts / borders are CSS tokens defined per
-//  theme under #field[data-theme="…"]. Purely structural per-theme tweaks
-//  (foods' image exit, foods header box, gaming label sizes …) stay in the
-//  theme files alongside the token block.
+//  FIELD — all design lives here, driven by CSS tokens. The theme files under
+//  themes/ only assign those tokens (no structural rules), so nothing repeats.
+//  Each token carries the code-vibes default as its fallback, so an undefined
+//  token renders the original default look.
 // ─────────────────────────────────────────────────────────────────────────────
 
 #field {
@@ -17,17 +17,20 @@
   overflow-y: auto;
 
   header {
+    background-color: var(--field-header-bg, transparent);
     display: flex;
     width: min(1217px, 96vw);
     margin-top: 40px;
     justify-content: space-between;
     color: var(--field-text-color);
-    align-items: flex-end;
+    align-items: var(--field-header-align, flex-end);
+    padding: var(--field-header-padding, 0);
+    border-radius: var(--field-header-radius, 0);
     flex-shrink: 0;
 
     span {
       font-family: var(--field-header-font);
-      font-size: 24px;
+      font-size: var(--field-label-font-size);
       font-weight: 700;
     }
 
@@ -35,9 +38,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: var(--field-current-player-gap, 12px);
+      letter-spacing: var(--field-current-player-spacing);
 
-      img { height: 28px; }
+      span { 
+        font-size: var(--field-current-player-font-size, 24px);
+        color: var(--field-current-player-color);  
+      }
+
+      img {
+        height: var(--field-current-player-img-height, 28px);
+        background-color: var(--field-current-player-img-bg, transparent);
+        padding: var(--field-current-player-img-padding, 0);
+        border-radius: var(--field-current-player-img-radius, 0);
+      }
     }
 
     .exit {
@@ -45,29 +59,50 @@
       align-items: center;
       padding: 17px 20px;
       gap: 4px;
+      color: var(--field-exit-fg, inherit);
       background-color: var(--field-exit-bg);
+      box-shadow: var(--field-exit-shadow, none);
       cursor: pointer;
       border: var(--field-exit-border);
-      transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      border-radius: var(--field-exit-border-radius);
+      transition: var(--field-exit-transition, background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out);
+
+      img {
+        filter: var(--field-exit-img-filter, none);
+        height: var(--field-exit-img-height);
+        transition: filter var(--field-exit-img-transition, 0.2s ease-in-out);
+      }
 
       &:hover {
         background-color: var(--field-exit-hover-bg);
-        box-shadow: var(--field-exit-hover-shadow);
+        color: var(--field-exit-hover-fg, var(--field-exit-fg, inherit));
+        box-shadow: var(--field-exit-hover-shadow, var(--field-exit-shadow, none));
+
+        img { filter: var(--field-exit-img-hover-filter, var(--field-exit-img-filter, none)); }
       }
     }
   }
 
   .labels {
     display: flex;
-    padding: 17px 20px;
-    gap: 20px;
+    padding: var(--field-labels-padding, 17px 20px);
+    gap: var(--field-labels-gap, 20px);
     background-color: var(--field-labels-bg);
     border: var(--field-labels-border);
+    border-radius: var(--field-labels-border-radius);
 
     .label {
       display: flex;
-      gap: 4px;
+      gap: var(--field-label-gap);
       align-items: center;
+
+      img {
+        height: var(--field-label-img-height, auto);
+        width: auto;
+      }
+
+      // some themes show only the icon + score → hide the "Blue" / "Orange" text
+      span:not(.score) { display: var(--field-label-text-display, inline); }
     }
 
     .blue   { color: var(--field-label-blue); }

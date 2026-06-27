@@ -65,7 +65,7 @@
       font-weight: 700;
       padding: 16px 36px;
       cursor: pointer;
-      transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+      transition: var(--exit-overlay-transition);
     }
 
     #exit-cancel, #exit-confirm {
@@ -80,7 +80,7 @@
 
       &:hover {
         background-color: var(--exit-overlay-cancel-bg-hover);
-        color: var(--exit-overlay-cancel-color-hover);
+        color: var(--exit-overlay-cancel-fg-hover);
       }
     }
 
@@ -90,7 +90,7 @@
       color: var(--exit-overlay-confirm-fg);
 
       &:hover {
-        box-shadow: 4px 4px 6px #4DD5BC33;
+        background-color: var(--exit-overlay-confirm-bg-hover);
       }
     }
   }
