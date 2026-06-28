@@ -26,9 +26,10 @@
   --field-labels-border-radius: 10px;
   --field-label-blue: #097fc5;
   --field-label-orange: #ea6900;
-  // only the figure + number show (no "Blue"/"Orange" text)
+  --field-label-font-size: 30px;
   --field-label-img-height: 25px;
   --field-label-text-display: none;
+  --field-label-gap: 4px;
 
   // current player: neutral pawn on a pill tinted per player (colour set in JS)
   --field-current-player-gap: 18px;
