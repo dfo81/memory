@@ -63,7 +63,8 @@
       font-family: $font-main;
       font-size: 18px;
       font-weight: 700;
-      padding: 16px 36px;
+      letter-spacing: var(--exit-overlay-button-spacing);
+      padding: var(--exit-overlay-button-padding, 12px 20px);
       cursor: pointer;
       transition: var(--exit-overlay-transition);
     }
@@ -80,7 +81,8 @@
 
       &:hover {
         background-color: var(--exit-overlay-cancel-bg-hover);
-        color: var(--exit-overlay-cancel-fg-hover);
+        color: var(--exit-overlay-cancel-color-hover);
+        box-shadow: none;
       }
     }
 
@@ -91,6 +93,7 @@
 
       &:hover {
         background-color: var(--exit-overlay-confirm-bg-hover);
+        box-shadow: none;
       }
     }
   }

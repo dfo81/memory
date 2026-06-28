@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: "/projects/banana/"
+  // App is served from the web root.
+  base: "/"
 });

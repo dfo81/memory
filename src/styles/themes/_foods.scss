@@ -121,13 +121,57 @@
   --exit-overlay-title-size: 28px;
   --exit-overlay-title-color: #a45212;
 
-  --exit-overlay-cancel-bg: #f3832d;
-  --exit-overlay-cancel-border: none;
-  --exit-overlay-cancel-fg: #fff;
-  --exit-overlay-button-radius: 10px;
-  --exit-overlay-confirm-bg: transparent;
-  --exit-overlay-confirm-border: 2px solid #f3832d;
-  --exit-overlay-confirm-fg: #f3832d;
+  // Structural exception: both buttons are pure images (default + hover swap),
+  // exactly like the header exit — a two-layer pseudo-element swap that can't
+  // reduce to value tokens, so it stays as a rule.
+  .exit-overlay__actions {
+    #exit-cancel,
+    #exit-confirm {
+      position: relative;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      box-shadow: none;
+      // text lives in the SVG; hide the HTML label
+      font-size: 0;
+      color: transparent;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      &::after {
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+      }
+
+      &:hover {
+        background-color: transparent;
+        box-shadow: none;
+
+        &::after { opacity: 1; }
+      }
+    }
+
+    #exit-cancel {
+      width: 221px;
+      height: 55px;
+      &::before { background-image: url("../../assets/icons/foods_theme/no_back.svg"); }
+      &::after  { background-image: url("../../assets/icons/foods_theme/no_back_hover.svg"); }
+    }
+
+    #exit-confirm {
+      width: 144px;
+      height: 49px;
+      &::before { background-image: url("../../assets/icons/foods_theme/exit_game.svg"); }
+      &::after  { background-image: url("../../assets/icons/foods_theme/exit_game_hover.svg"); }
+    }
+  }
 }
 
 // ── Game over ────────────────────────────────────────────────────────────────

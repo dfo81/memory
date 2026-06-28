@@ -45,7 +45,10 @@
   --field-exit-hover-bg: rgba(232, 48, 96, 0.2);
   --field-exit-hover-shadow: 4px 4px 6px 0 rgba(232, 48, 96, 0.25);
   --field-exit-img-height: 40px;
-  --field-exit-img-hover-filter: brightness(0) saturate(100%) invert(29%) sepia(87%) saturate(1971%) hue-rotate(325deg) brightness(91%) contrast(99%);
+  // hue-rotate(-35deg) == 325deg (same end colour) but animates the short way
+  // round, so the hover transition goes white → red directly instead of
+  // sweeping through blue.
+  --field-exit-img-hover-filter: brightness(0) saturate(100%) invert(29%) sepia(87%) saturate(1971%) hue-rotate(-35deg) brightness(91%) contrast(99%);
 }
 
 // ── Cards ────────────────────────────────────────────────────────────────────
@@ -82,18 +85,21 @@
   --exit-overlay-title-size: 28px;
   --exit-overlay-title-color: #1a1a1a;
 
-  --exit-overlay-cancel-bg: transparent;
-  --exit-overlay-cancel-bg-hover: #E83060;
-  --exit-overlay-cancel-border: 2px solid #E83060;
-  --exit-overlay-cancel-color-hover: #fff;
-  --exit-overlay-cancel-fg: #E83060;
+  --exit-overlay-cancel-bg: #ED1B76;
+  --exit-overlay-cancel-bg-hover: transparent;
+  --exit-overlay-cancel-border: 2px solid #E71C4F;
+  --exit-overlay-cancel-color-hover: #E71C4F;
+  --exit-overlay-cancel-fg: #fff;
 
   --exit-overlay-button-radius: 10px;
+  --exit-overlay-button-padding: 12px 20px;
+  --exit-overlay-button-spacing: 4%;
 
-  --exit-overlay-confirm-bg: #E83060;
+  --exit-overlay-confirm-bg: transparent;
+  --exit-overlay-confirm-bg-hover: #ED1B7614;
   --exit-overlay-confirm-shadow-hover: 3px 3px 5px #2F2E2E33; 
   --exit-overlay-confirm-border: 2px solid #E83060;
-  --exit-overlay-confirm-fg: #fff;
+  --exit-overlay-confirm-fg: #ED1B76;
   --exit-overlay-confirm-color-hover: #fff;
 }
 

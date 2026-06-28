@@ -17,6 +17,7 @@
   --field-labels-border: none;
   --field-label-blue: #2bb1ff;
   --field-label-orange: #f58e39;
+  --field-label-gap: 4px;
 
   --field-exit-bg: #86e9d633;
   --field-exit-border: 3px solid #4DD5BC;
@@ -46,13 +47,17 @@
   --exit-overlay-title-size: 40px;
   --exit-overlay-title-color: #1a1a1a;
 
+  --exit-overlay-button-padding: 16px 24px;
+
   --exit-overlay-cancel-bg: #4DD5BC;
   --exit-overlay-cancel-bg-hover: #66CFBCB2; 
   --exit-overlay-cancel-border: 2px solid #4DD5BC;
   --exit-overlay-cancel-fg: #fff;
+  --exit-overlay-cancel-fg-hover: #fff;
   --exit-overlay-cancel-color-hover: #fff;
   
   --exit-overlay-confirm-bg: transparent;
+  --exit-overlay-confirm-bg-hover: #86E9D624;
   --exit-overlay-confirm-border: 2px solid #4DD5BC;
   --exit-overlay-confirm-fg: #4DD5BC;
   --exit-overlay-confirm-shadow-hover: 4px 4px 6px #4DD5BC33;

@@ -98,13 +98,16 @@
   --exit-overlay-cancel-border: none;
   --exit-overlay-button-radius: 10px;
   --exit-overlay-button-shadow: 3px 3px 5px #2F2E2E33;
+  --exit-overlay-button-padding: 12px 20px;
+
   --exit-overlay-cancel-fg: #1E7594;
   --exit-overlay-cancel-fg-hover: #fff;
+  --exit-overlay-cancel-color-hover: #fff; 
+
   --exit-overlay-confirm-bg: #FD8A81;
   --exit-overlay-confirm-bg-hover: #ED5B50;
   --exit-overlay-confirm-border: none;
   --exit-overlay-confirm-fg: #fff;
-  --exit-overlay-sheet-radius: 10px;
 }
 
 // ── Game over ────────────────────────────────────────────────────────────────
